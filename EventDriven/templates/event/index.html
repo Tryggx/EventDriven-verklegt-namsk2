@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>ÞETTA ER INDEX Í EVENT !</h1>
-    {% for user in testdata %}
-        {% include 'event/single_event.html' with user=user %}
+    <h1>All events!</h1>
+    {% for event in events %}
+        {% include 'event/single_event.html' with event=event %}
     {% endfor %}
 {% endblock %}

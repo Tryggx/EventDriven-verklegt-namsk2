@@ -1,23 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from event.models import Event
 
-testdata = [
-    {
-        'name': 'oli',
-        'number': '8667475'
-    },
-    {
-        'name': 'sindri',
-        'number': 'dno'
-    },
-    {
-        'name': 'Frikki',
-        'number': 'dno'
-    },
-    {
-        'name': 'Davíð',
-        'number': 'dno'
-    }
-    ]
 # Create your views here.
 def index(request):
-    return render(request, 'event/index.html', context={ 'testdata':testdata })
+    return render(request, 'event/index.html', context={ 'events':Event.objects.all() })
