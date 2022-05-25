@@ -9,7 +9,7 @@ class Event(models.Model):
     #eventttypeid = models.ForeignKey(EventType)
 
 class Show(models.Model):
-    #venueid = models.ForeignKey(Venue, on_delete=models.CASCADE)
+    venueid = models.ForeignKey(Venue, on_delete=models.CASCADE)
     eventid = models.ForeignKey(Event, on_delete=models.CASCADE)
     datetime = models.DateTimeField()
 
