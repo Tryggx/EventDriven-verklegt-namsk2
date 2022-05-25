@@ -9,8 +9,9 @@ class Location(models.Model):
 
 class Venue(models.Model):
     name = models.CharField(max_length=255)
-    seating = models.IntegerField()
-    accessible_seating = models.IntegerField()
+    seats = models.IntegerField()
+    accessible_seats = models.IntegerField()
+    standing = models.IntegerField()
     locationid = models.ForeignKey(Location, on_delete=models.CASCADE)
     image = models.CharField(max_length=8192)
 
