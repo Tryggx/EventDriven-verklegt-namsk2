@@ -6,8 +6,8 @@ class Location(models.Model):
 
 class Venue(models.Model):
     name = models.CharField(255)
-    seating = models.IntegerField
-    accessible_seating = models.IntegerField
+    seating = models.IntegerField()
+    accessible_seating = models.IntegerField()
     locationid = models.ForeignKey(Location, on_delete=models.CASCADE)
 
 
