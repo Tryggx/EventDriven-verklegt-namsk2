@@ -2,6 +2,7 @@
 {% block content %}
     <h1>ÞETTA ER INDEX Í EVENT !</h1>
     {% for user in testdata %}
+<<<<<<< Updated upstream
         <div class="card singleeventcard" style="width: 18%;">
             <img src="https://cdn.tix.is/tix/EventImages/Feature_13192.jpg?cache=637877903325670000" class="card-img-top" alt="...">
             <div class="card-body">
@@ -10,5 +11,8 @@
 
             </div>
         </div>
+=======
+        {% include 'event/single_event.html' with user = user %}
+>>>>>>> Stashed changes
     {% endfor %}
 {% endblock %}
