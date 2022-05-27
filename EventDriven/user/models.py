@@ -2,6 +2,10 @@ from django.db import models
 from event.models import Zone, Show
 
 # Create your models here.
+class Ticket(models.Model):
+    showid = models.ForeignKey(Show, on_delete=models.CASCADE)
+    zone_name = models.ForeignKey(Zone, on_delete=models.SET_NULL, null=True)
+
 
 class User(models.Model):
     date_of_birth = models.DateTimeField()
@@ -11,8 +15,4 @@ class User(models.Model):
     def __str__(self):
         return str(self.ticketid) + " TicketID: " + self.name
 
-class Ticket(models.Model):
-    userid = models.ForeignKey(User, on_delete=models.CASCADE)
-    showid = models.ForeignKey(Show, on_delete=models.CASCADE)
-    zone_name = models.ForeignKey(Zone.name)
 

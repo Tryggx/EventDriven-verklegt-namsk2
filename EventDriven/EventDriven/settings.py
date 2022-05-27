@@ -13,7 +13,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import event.context_processors
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -40,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'event',
     'venue',
-    'main'
+    'main',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -66,6 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #custom
+                # event.context_processors.eventtype_processor'
             ],
         },
     },

@@ -107,16 +107,6 @@ h1 {
       top:0; bottom:0; right: 0;
       background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
 }
-
 .headlineEvent {
-    height: 100px;
-    position: center;
-    width:100px
+    height:200px;
 }
-
-.headlineimg {
-    height: 100px;
-    width: 100px;
-    position: center;
-}
-
