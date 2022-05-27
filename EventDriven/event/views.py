@@ -20,3 +20,9 @@ def get_zones_by_showid(request, showid, eventid):
         'zones': Show.objects.get(pk=showid).zone_set.all(),
         'show' : get_object_or_404(Show, pk=showid)
     })
+
+def allConcerts(request):
+    return render(request, 'event/index.html', context={
+        'header_name': "Concerts",
+        'events':Event.objects.filter(eventtypeid=1)
+    })
