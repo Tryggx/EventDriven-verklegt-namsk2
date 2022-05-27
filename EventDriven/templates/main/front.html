@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
         <h1>HEADLINE</h1>
-        <img src ="{{ headliners.poster_image }}"
+    <div class="headlineEvent">
+        <img class="headlineimg" src ="{{ headliners.poster_image }}"
+    </div>
         {% for eventtype in eventtypes %}
             <h1>{{ eventtype.name }}</h1>
             <div class="wrapper">
