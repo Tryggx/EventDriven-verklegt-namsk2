@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+        <h1>HEADLINE</h1>
+        <img src ="{{ headliners.poster_image }}"
+        {% for eventtype in eventtypes %}
+            <h1>{{ eventtype.name }}</h1>
+            <div class="wrapper">
+            <div id="section1">
+            {% for event in events %}
+                {% if event.eventtypeid == eventtype %}
+                {% include 'event/single_event_card.html' with event=event %}
+                {% endif %}
+                {% endfor %}
+                    </div>
+                    </div>
+        {% endfor %}
+
+{% endblock %}
