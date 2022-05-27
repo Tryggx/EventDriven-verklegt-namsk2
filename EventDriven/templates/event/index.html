@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>All events!</h1>
-    {% for event in events %}
-        {% include 'event/single_event.html' with event=event %}
-    {% endfor %}
+    <div class="wrapper">
+        <div id="section1">
+        {% for event in events %}
+            {% include 'event/single_event.html' with event=event %}
+        {% endfor %}
+        </div>
+    </div>
 {% endblock %}
