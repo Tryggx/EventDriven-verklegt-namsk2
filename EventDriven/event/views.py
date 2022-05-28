@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from event.models import Event, Show
+from event.models import Event, Show, EventType
 
 
 # Create your views here.
@@ -21,8 +21,8 @@ def get_zones_by_showid(request, showid, eventid):
         'show' : get_object_or_404(Show, pk=showid)
     })
 
-def allConcerts(request):
+def get_event_by_type(request, eventtypeid):
     return render(request, 'event/index.html', context={
-        'header_name': "Concerts",
-        'events':Event.objects.filter(eventtypeid=1)
+        'header_name': EventType.objects.get(pk=eventtypeid),
+        'events':Event.objects.filter(eventtypeid=eventtypeid)
     })

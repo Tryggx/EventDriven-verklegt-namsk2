@@ -4,5 +4,5 @@ from event import views as eventviews
 
 urlpatterns = [
     path('',views.index, name="main_index"),
-    path('concerts', eventviews.allConcerts, name="allConcerts")
+    path('eventtypes/<int:eventtypeid>', eventviews.get_event_by_type, name="EventByType")
 ]
