@@ -20,7 +20,10 @@ urlpatterns = [
     path('', include('main.urls')),
     path('admin/', admin.site.urls),
     path('events/', include('event.urls')),
+<<<<<<< Updated upstream
     #path('venues/', include('venue.urls'))
     path('users/', include('django.contrib.auth.urls')),
+=======
+>>>>>>> Stashed changes
     path('users/', include('user.urls'))
 ]
