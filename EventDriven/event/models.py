@@ -14,6 +14,7 @@ class Event(models.Model):
     poster_image = models.CharField(max_length=8192)
     header_image = models.CharField(max_length=8192)
     eventtypeid = models.ForeignKey(EventType, on_delete=models.CASCADE)
+    headliner = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -26,7 +27,7 @@ class Show(models.Model):
     accessible_seating = models.IntegerField()
 
     def __str__(self):
-        return str(self.eventid) + " " + str(self.datetime)
+        return str(self.eventid) + " " + str(self.datetime) + "  " + str(self.id)
 
 class Zone(models.Model):
     name = models.CharField(max_length=255)

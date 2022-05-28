@@ -1,6 +1,9 @@
-<div class="item">
-    <a href="{{ event.id }}" style="width:200px">
-    <img  src="{{ event.poster_image }}"  alt="...">
-    </a>
-
-</div>
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ event.name }}</h1>
+    <h1>{{ event.description }}
+    <br>
+        {% for show in shows %}
+    <a href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br></a>
+    {% endfor %}
+{% endblock %}
