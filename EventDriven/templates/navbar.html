@@ -12,9 +12,8 @@
         <li class="nav-item">
           <a class="nav-link" href="/events">All Events</a>
         </li>
-        {% for type in eventtypes %}
-            </li>
-          <li class="nav-item">
+          {% for type in eventtypes %}
+              <li class="nav-item">
           <a class="nav-link" href="/eventtypes/{{ type.id }}">{{ type.name }}</a>
         </li>
           {% endfor %}
@@ -30,9 +29,22 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-        </li>-->
+        </li> -->
       </ul>
-          <a class="nav-link" href="/events">User</a>
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+          {% if user.is_authenticated %}
+            <a class="nav-link" href="users/profile">{{ user.username }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="users/logout">Logout</a>
+    </li>
+              {% else %}
+              <li>
+              <a class="nav-link" href="users/login">Login</a>
+              </li>
+        {% endif %}
+    </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
