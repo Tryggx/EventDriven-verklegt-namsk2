@@ -26,7 +26,7 @@ h1 {
   scroll-behavior: smooth;
 }
 #section1 {
-    width: 100%;
+    width: 98%;
     position: relative;
     display: grid;
     height:300px;
@@ -37,6 +37,10 @@ h1 {
     overflow-y:auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    scroll-behavior: smooth;
+    padding-right:40px;
+    /* allow further scrolling
+    */
 
 }
 #section1::-webkit-scrollbar {
