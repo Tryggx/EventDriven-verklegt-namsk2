@@ -71,7 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 #custom
-                # event.context_processors.eventtype_processor'
+                'event.context_processors.eventtype_processor'
             ],
         },
     },

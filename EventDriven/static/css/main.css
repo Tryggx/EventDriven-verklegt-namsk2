@@ -18,6 +18,10 @@ h1 {
     font-weight: 700;
     font-family: 'Gotham', sans-serif;
 }
+p, h2{
+    color:white;
+}
+
 
 .wrapper {
   display: grid;
@@ -113,4 +117,9 @@ h1 {
 }
 .headlineEvent {
     height:200px;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
 }
