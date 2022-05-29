@@ -1,25 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="center">
-<h2>Log In</h2>
-    <br>
-
-<form method="post">
-  {% csrf_token %}
-
-  <p>
-    <label for="id_username">Username:</label>
-    <input type="text" class="form-control" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
-  </p>
-  <p>
-    <label for="id_password">Password:</label>
-    <input type="password" class="form-control" name="password" autocomplete="current-password" required id="id_password">
-  </p>
-  <button type="submit" class="btn btn-primary">Log In</button>
-</form>
-        <form style="display: inline" action="/users/register">
+        <h2>Log In</h2>
+        <br>
+        <form method="post" class="form form-horizontal white">
+            {% csrf_token %}
+            {{ form }}
             <br>
-            <button type="submit" class="btn btn-primary" >Register</button>
+            <input type="submit" class="btn btn-primary" value="Login">
+            <a style="color:gray" href="/users/register">Register new user</a>
         </form>
     </div>
 {% endblock %}

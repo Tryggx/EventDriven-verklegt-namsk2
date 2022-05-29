@@ -123,3 +123,7 @@ p, h2{
   margin: auto;
   width: 50%;
 }
+
+.white {
+    color: white;
+}
