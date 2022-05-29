@@ -19,6 +19,7 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+
 class Show(models.Model):
     venueid = models.ForeignKey(Venue, on_delete=models.CASCADE)
     eventid = models.ForeignKey(Event, on_delete=models.CASCADE)
@@ -29,10 +30,12 @@ class Show(models.Model):
     def __str__(self):
         return str(self.eventid) + " " + str(self.datetime) + "  " + str(self.id)
 
+
 class Zone(models.Model):
     name = models.CharField(max_length=255)
     showid = models.ForeignKey(Show, on_delete=models.CASCADE)
     price = models.CharField(max_length=100)
+    total_tickets = models.IntegerField()
 
     def __str__(self):
         return str(self.showid) + " ZONE: " + self.name
