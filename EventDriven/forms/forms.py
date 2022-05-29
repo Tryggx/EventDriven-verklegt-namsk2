@@ -24,7 +24,7 @@ class RegisterUserForm(UserCreationForm):
             'last_name': widgets.TextInput(attrs={ 'class': 'form-control'}),
             'date_of_birth': widgets.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'email': widgets.TextInput(attrs={ 'class': 'form-control'}),
-            'profile_picture': widgets.FileInput(attrs={ 'class': 'form-control'})
+            'profile_picture': widgets.ClearableFileInput(attrs={ 'class': 'form-control'})
         }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
