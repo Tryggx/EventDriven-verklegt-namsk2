@@ -37,3 +37,4 @@ class RegisterUserForm(UserCreationForm):
         self.fields['password2'].widget.attrs.update(
             {'class': 'form-control'}
         )
+        self.fields['username'].help_text = 'Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only. <br>'

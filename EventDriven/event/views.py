@@ -1,4 +1,4 @@
-from django.db.models import Count, Value, IntegerField, F
+from django.db.models import Count, Value, IntegerField, F, OuterRef, Sum, Q
 from django.db.models.functions import Cast
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
@@ -18,7 +18,9 @@ def index(request):
 def get_event_by_id(request, eventid):
     return render(request, 'event/single_event.html', {
         'event': get_object_or_404(Event, pk=eventid),
-        'shows': Show.objects.values().annotate(availabletickets=F('seating')+F('accessible_seating')-Count('ticket')).filter(eventid=eventid)
+        'shows': Show.objects.values().annotate(
+            availabletickets=SubqueryAggregate(
+                'zone__total_tickets', filter=Q(showid=OuterRef('id')), aggregate=Sum)-Count('ticket'))
     })
 
 def get_zones_by_showid(request, showid, eventid):
@@ -48,8 +50,16 @@ def eventjson(request, eventid):
     }
     return JsonResponse({'data': event})
 
+
+
+
+
 #Zone.objects.values('id').annotate(Count(Ticket.objects.filter(zone_name_id=id)))
 
 #Zone.objects.values('ticket').annotate(c=Count('ticket'))
 
-#Show.objects.values().annotate(total_tickets=SubqueryAggregate(Zone.objects.filter(pk=OuterRef('zone')).values('total_tickets')))
+#Show.objects.values().annotate(total_tickets_show=SubqueryAggregate(Zone.objects.filter(showid=OuterRef('id')).values('showid').distinct(),aggregate=Sum('zone__total_tickets')))
+
+#Show.objects.values().annotate(total_tickets_show=SubqueryAggregate('zone__total_tickets', filter=Q(showid=OuterRef('id')), aggregate=Sum))
+
+#Zone.objects.values('showid').distinct().annotate(total_show_tickets=Sum('total_tickets')).values('total_show_tickets')
