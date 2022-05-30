@@ -10,5 +10,6 @@ urlpatterns = [
         name="login_page"),
     path('register', views.register, name="register"),
     path('logout', LogoutView.as_view(next_page='login_page'), name='logout'),
-    path('profile', views.profile, name='users_profile')
+    path('profile', views.profile, name='users_profile'),
+
 ]

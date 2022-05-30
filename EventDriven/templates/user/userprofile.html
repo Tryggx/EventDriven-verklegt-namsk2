@@ -1,8 +1,52 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="row my-3 p-3">
-        <h1>This is the profile page for {{user.username}}</h1>
+  <nav id="sidebar" class="d-flex align-items-start">
+      <nav class="nav flex-column navbar-dark bg-dark">
+          <a class="nav-link active" aria-current="page" href="#1">Account settings</a>
+          <a class="nav-link" href="#2">My tickets</a>
+          <a class="nav-link" href="#3">All Events</a>
+          <a class="nav-link" href="#4">All Events</a>
+          <a class="nav-link" href="#5">All Events</a>
+      </nav>
+    </nav>
+ <!--   <nav id="sidebar" class="navbar align-items-stretch p-3">
+        <div class="nav nav-pills flex-column">
+            <a class="side-link" href="#1">Item 1</a>
+            <a class="side-link" href="#item-2">Item 2</a>
+            <a class="side-link" href="#item-3">Item 3</a>
+        </div>
+</nav>
+
+<div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" tabindex="0">
+  <h4 id="item-1">Item 1</h4>
+  <p>This is {{ user.username }}'s profile page</p>
+  <h4 id="item-2">Item 2</h4>
+  <p>...</p>
+  <h4 id="item-3">Item 3</h4>
+  <p>...</p>
+</div>-->
+    <div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0">
+        <div id="1">
+            <h4 class="white">
+                This is {{ user.username }}'s profile page
+            </h4>
+            <img src="{{ user.profile_picture }}">
+        </div>
+
+         <div id="2">
+         <h4 class="white">{{ user.username }}'s tickets</h4>
+         {% for ticket in tickets %}
+            <div class="wrapper">
+            <div id="section1">
+            {% for event in events %}
+                {% if event == ticket.showid.eventid %}
+                {% include 'event/single_event_card.html' with event=event %}
+                {% endif %}
+                {% endfor %}
+                    </div>
+                    </div>
+        {% endfor %}
+        </div>
     </div>
-      </ul>
-    </div>
+
 {% endblock content %}
