@@ -4,6 +4,6 @@
     <h1>{{ event.description }}
     <br>
         {% for show in shows %}
-    <a href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br></a>
+    <a class="btn btn-primary" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</a>
     {% endfor %}
 {% endblock %}

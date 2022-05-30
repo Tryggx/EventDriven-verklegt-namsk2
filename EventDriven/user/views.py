@@ -20,11 +20,11 @@ def profile(request):
 def register(request):
     if request.method == 'POST':
         print("POST REQUEST")
-        form = RegisterUserForm(data=request.POST)
+        form = RegisterUserForm(request.POST, request.FILES)
         if form.is_valid():
             print("VALID FORM")
             form.save()
-            return redirect('login')
+            return redirect('/users/login')
 
     return render(request, 'user/register.html', {
       'form': RegisterUserForm()

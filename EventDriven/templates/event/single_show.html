@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+    <br><br> <!-- Skoða - Renderast undir Navbar -->
+    <h1> {{ event.name }}</h1>
     <h1>{{ show.venueid }}</h1>
     <h1>{{ show.datetime }}</h1>
+    <h2>Please Select A zone</h2>
     {% for zone in zones %}
-        <button> {{ zone.name }} <br> {{ zone.price }} kr</button>
+        <a class="btn btn-primary"> {{ zone.name }} <br> {{ zone.price }} kr <br> Available Tickets: {{ zone.availabletickets }}</a>
     {% endfor %}
 {% endblock %}

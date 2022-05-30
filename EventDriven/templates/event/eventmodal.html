@@ -1,0 +1,23 @@
+<div class="modal modal-lg fade" id="eventmodal{{ event.id }}" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ event.name }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <h1>{{ event.name }}</h1>
+    <h1>{{ event.description }}
+    <br>
+      </div>
+      <div class="modal-footer">
+                {% for show in shows %}
+                <button class="btn btn-primary" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</button>
+                {% endfor %}
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
