@@ -127,3 +127,7 @@ p, h2{
 .white {
     color: white;
 }
+
+.modal {
+    background-color: black !important;
+}

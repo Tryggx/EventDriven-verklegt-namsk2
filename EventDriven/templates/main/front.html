@@ -11,6 +11,7 @@
             {% for event in events %}
                 {% if event.eventtypeid == eventtype %}
                 {% include 'event/single_event_card.html' with event=event %}
+                    {% include 'event/eventmodal.html' with event=event %}
                 {% endif %}
                 {% endfor %}
                     </div>
