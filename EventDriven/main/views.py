@@ -1,4 +1,4 @@
-from django.db.models import Q, OuterRef, Sum, Count
+from django.db.models import Q, OuterRef, Sum, Count, F
 from django.shortcuts import render
 from sql_util.aggregates import SubqueryAggregate
 
