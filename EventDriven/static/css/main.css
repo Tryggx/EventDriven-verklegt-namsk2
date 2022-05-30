@@ -170,5 +170,10 @@ Change the input style of form-control
 }
 
 .modal {
-    background-color: black !important;
+    --bs-modal-bg: black;
+}
+.modal-background {
+    background: black !important;
+    background-color: black;
+    background: black;
 }

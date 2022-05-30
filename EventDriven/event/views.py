@@ -18,7 +18,7 @@ def index(request):
 def get_event_by_id(request, eventid):
     return render(request, 'event/single_event.html', {
         'event': get_object_or_404(Event, pk=eventid),
-        'shows': Show.objects.values().annotate(
+        'shows': Show.objects.values().filter(eventid=eventid).annotate(
             availabletickets=SubqueryAggregate(
                 'zone__total_tickets', filter=Q(showid=OuterRef('id')), aggregate=Sum)-Count('ticket'))
     })

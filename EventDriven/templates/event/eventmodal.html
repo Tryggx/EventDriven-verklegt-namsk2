@@ -13,8 +13,11 @@
     <br>
       </div>
       <div class="modal-footer">
+
                 {% for show in shows %}
-                <button class="btn btn-primary" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</button>
+                    {% if show.eventid_id == event.id %}
+                        <button class="btn btn-primary showbutton" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</button>
+                    {% endif %}
                 {% endfor %}
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
