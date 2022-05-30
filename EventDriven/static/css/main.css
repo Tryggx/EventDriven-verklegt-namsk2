@@ -35,8 +35,7 @@ p, h2{
     display: grid;
     height:300px;
     grid-template-columns: repeat(20, auto);
-    margin: 20px;
-    margin-top: 0px;
+    margin: 0px 20px 20px;
     overflow-x:scroll;
     overflow-y:auto;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -58,9 +57,7 @@ p, h2{
     overflow: hidden;
     height:180px;
     padding: 0 0px;
-    margin: 0px 10px;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin: 30px 10px 10px;
     transition: 250ms all;
 }
 
@@ -76,8 +73,7 @@ p, h2{
     -ms-transform: scale(1.15);
     -o-transform: scale(1.15);
     transform: scale(1.15);
-    margin: 10px 30px;
-    margin-top: 30px;
+    margin: 30px 30px 10px;
 }
 
 .heading {
@@ -115,8 +111,26 @@ p, h2{
       top:0; bottom:0; right: 0;
       background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
 }
-.headlineEvent {
-    height:200px;
+.headlineEvent{
+}
+.headlineimg {
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 8px;
+    width: calc(100% - 40px);
+    max-height: 400px;
+    height: 50vh;
+
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.headlineimg:hover img{
+    -webkit-transform: scale(1.15);
+    -moz-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    -o-transform: scale(1.15);
+    transform: scale(1.15);
 }
 
 .center {
@@ -126,6 +140,33 @@ p, h2{
 
 .white {
     color: white;
+}
+
+/*
+Change the input style of form-control
+ */
+
+.form-horizontal{
+    min-width:300px;
+    max-width:700px;
+    margin: 0 auto;
+    font-family: 'Gotham', sans-serif;
+
+}
+
+#id_username.form-control{
+    width: 100%;
+
+}
+#id_password.form-control{
+    width: 100%;
+}
+.form form-horizontal white > input{
+    width:100%;
+}
+.form-control > label{
+    margin: 0 auto;
+
 }
 
 .modal {
