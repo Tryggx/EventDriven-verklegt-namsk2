@@ -7,7 +7,7 @@ $(document).ready(function(){
             sucess: function(resp){
                 var newHtml = resp.data.map(d =>{
                     return `<div>
-                            <p>test</p>
+                            <p></p>
                             </div>`
                 })
             },

@@ -2,7 +2,9 @@
 {% block content %}
     <div class="row my-3 p-3">
         <h1>This is the profile page for {{user.username}}</h1>
+        {%  if user.profile_picture.url is not None %}
         <img style="width: 200px;" src="{{ user.profile_picture.url }}">
+        {% endif %}
     </div>
       </ul>
     </div>

@@ -3,6 +3,7 @@ from django.db.models.functions import Cast
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from event.models import Event, Show, EventType, Zone
+from sql_util.utils import SubqueryAggregate
 from user.models import Ticket
 
 # Create your views here.
@@ -33,6 +34,7 @@ def get_event_by_type(request, eventtypeid):
         'events': Event.objects.filter(eventtypeid=eventtypeid)
     })
 
+
 def eventjson(request, eventid):
     singleevent = Event.objects.get(pk=eventid)
     event = {
@@ -49,3 +51,5 @@ def eventjson(request, eventid):
 #Zone.objects.values('id').annotate(Count(Ticket.objects.filter(zone_name_id=id)))
 
 #Zone.objects.values('ticket').annotate(c=Count('ticket'))
+
+#Show.objects.values().annotate(total_tickets=SubqueryAggregate(Zone.objects.filter(pk=OuterRef('zone')).values('total_tickets')))
