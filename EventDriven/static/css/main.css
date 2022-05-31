@@ -11,8 +11,8 @@ body {
 h1 {
     color: white;
     text-align: left;
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-left: 25px;
+    margin-top: 15px;
     margin-bottom: 0px;
     font-size: 1.5rem;
     font-weight: 700;
@@ -22,20 +22,34 @@ p, h2{
     color:white;
 }
 
+.modal-title {
+    margin-left: 20px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Gotham', sans-serif;
+}
+.modal-body > h1 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Gotham', sans-serif;
+}
 
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(3,100%);
-  overflow:hidden;
-  scroll-behavior: smooth;
+    display: grid;
+    grid-template-columns: repeat(3,100%);
+    overflow:hidden;
+    scroll-behavior: smooth;
+    height: 230px;
 }
 #section1 {
     width: 98%;
     position: relative;
     display: grid;
-    height:300px;
+    height:230px;
     grid-template-columns: repeat(20, auto);
-    margin: 0px 20px 20px;
+    margin: -10px 20px 15px;
     overflow-x:scroll;
     overflow-y:auto;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -133,6 +147,17 @@ p, h2{
     transform: scale(1.15);
 }
 
+.close {
+    margin-top: -15px;
+    margin-right: -5px;
+    background: #161616;
+    color: white;
+    font-family: 'Gotham', sans-serif;
+    font-size: 2rem;
+    border:0px;
+
+}
+
 .center {
   margin: auto;
   width: 50%;
@@ -170,10 +195,10 @@ Change the input style of form-control
 }
 
 .modal {
-    --bs-modal-bg: black;
+    --bs-modal-bg: #161616;
 }
 .modal-background {
-    background: black !important;
-    background-color: black;
-    background: black;
+    background: #161616 !important;
+    background-color: #161616;
+    background: #161616;
 }
