@@ -1,11 +1,21 @@
 html {
-  scroll-behavior: smooth;
-}
+    scroll-behavior: smooth;
 
+}
+#cloud-container{
+    overflow:hidden !important;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:-1;
+    box-shadow: inset 0px 0px 200px 40px rgba(82, 15, 92, 0.15);
+}
 body {
-  margin: 0;
-  background-color: #161616;
-  font-family: 'Gotham', sans-serif;
+    margin: 0;
+    background-color: #161616;
+    font-family: 'Gotham', sans-serif;
 }
 
 h1 {
@@ -17,7 +27,15 @@ h1 {
     font-size: 1.5rem;
     font-weight: 700;
     font-family: 'Gotham', sans-serif;
+
 }
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Gotham', sans-serif;
+}
+
 p, h2{
     color:white;
 }
@@ -34,6 +52,19 @@ p, h2{
     font-size: 1rem;
     font-weight: 700;
     font-family: 'Gotham', sans-serif;
+}
+
+#searchbox {
+    background: #272727;
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
+    color: white;
+    font-family: 'Gotham', sans-serif;
+}
+
+.navbar {
+    background-color: rgba(22,22,22, 0.85)!important;
 }
 
 .wrapper {
@@ -64,9 +95,23 @@ p, h2{
   display: none;
 }
 
+#searchsection {
+    width: 94%;
+    position: relative;
+    height:230px;
+    margin: -10px 50px 15px;
+
+
+
+}
+#searchsection::-webkit-scrollbar {
+  display: none;
+}
+
 
 .item {
     border-radius:8px;
+    float: left;
     width: 320px;
     overflow: hidden;
     height:180px;
@@ -104,29 +149,7 @@ p, h2{
         color: #fff;
       }
 
-.arrow__btn {
-      position: absolute;
-      color: #fff;
-      text-decoration: none;
-      font-size: 6em;
-      background:rgb(0,0,0);
-      width: 80px;
-      padding: 20px;
-      text-align: center;
-      z-index: 1;
-    }
 
-.left-arrow {
-      top:0; bottom:0; left:0;
-      background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-    }
-
-.right-arrow {
-      top:0; bottom:0; right: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-}
-.headlineEvent{
-}
 .headlineimg {
     margin-left: 20px;
     margin-right: 20px;
@@ -173,7 +196,7 @@ Change the input style of form-control
 
 .form-horizontal{
     min-width:300px;
-    max-width:700px;
+    max-width:500px;
     margin: 0 auto;
     font-family: 'Gotham', sans-serif;
 
@@ -201,4 +224,16 @@ Change the input style of form-control
     background: #161616 !important;
     background-color: #161616;
     background: #161616;
+}
+
+.modal-body {
+    /* Split modal-body vertically into two sections */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+
+}
+
+.errorlist {
+    color: red;
 }

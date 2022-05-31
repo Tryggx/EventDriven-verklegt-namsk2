@@ -8,16 +8,16 @@ $(document).ready(function(){
             success: function(resp){
                 var newHtml = resp.data.map(d => {
                     return `
-                            <div class="section">
                             <div class="item">
-                                <a href="/events/{{ event.id }}" style="width:200px">
+                                <a href="/events/${ d.id }" style="width:200px">
                                 <!--<a href="#eventmodal${ d.id }"  data-bs-toggle="modal" data-bs-target="#eventmodal${ d.id }" style="width:200px">-->
                                 <img  src="${ d.poster_image }"  alt="...">
                                 </a>
                             </div>
-                    </div>`
+                    `
                 })
-                $('#eventContainer').html(newHtml.join(''));
+                let returnHtml = `<div class="wrapper" style="height: 90vh;"><div id="searchsection">` + newHtml.join('') + `</div> </div>`
+                $('#eventContainer').html(returnHtml);
                 $('#searchbox').val('');
             },
             error: function(xhr, status, error){
@@ -25,4 +25,11 @@ $(document).ready(function(){
             }
         })
     });
+    $('#searchbox').keypress(
+        function(event){
+            if (event.which == '13') {
+                event.preventDefault();
+                $('#searchbtn').click();
+            }
+        });
 });

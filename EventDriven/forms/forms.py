@@ -42,7 +42,7 @@ class RegisterUserForm(UserCreationForm):
         self.fields['password2'].widget.attrs.update(
             {'class': 'form-control'}
         )
-        self.fields['username'].help_text = 'Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only. <br>'
+        self.fields['username'].help_text = 'Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only.<br>'
 
 class AddressInfoForm(forms.Form):
         name = forms.CharField(label='Full name', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
