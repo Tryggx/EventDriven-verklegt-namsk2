@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content%}
-<input type="checkbox" id="sendhome" >
-<label for="sendhome" class="white"> I want the ticket sent to my house </label><br>
+    <div class="center">
+        <p>{{ event.name }}</p>
+        <p>{{ show.datetime }}</p>
+        <p>Zone: {{ zone.name }}</p>
+        <input type="checkbox" id="sendhome" >
+        <label for="sendhome" class="white"> I want the ticket sent to my house </label><br>
+     </div>
     <div id="addressform" class="center" style="display: none;" >
-    {{ addressform }}
+    {{ addressform.as_p }}
     </div>
     <br>
     <div id="paymentform" class="center">
-    {{ paymentform }}
+    <p>Payment info:</p>
+    {{ paymentform.as_p }}
     </div>
 {% endblock %}
