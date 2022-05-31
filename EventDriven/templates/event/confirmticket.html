@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<input type="checkbox" id="sendhome" >
+<label for="sendhome" class="white"> I want the ticket sent to my house </label><br>
+    <div id="addressform" class="center" style="display: none;" >
+    {{ addressform }}
+    </div>
+    <br>
+    <div id="paymentform" class="center">
+    {{ paymentform }}
+    </div>
+{% endblock %}

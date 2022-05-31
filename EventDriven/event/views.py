@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from event.models import Event, Show, EventType, Zone
 from sql_util.utils import SubqueryAggregate
+
+from forms.forms import AddressInfoForm, PaymentForm
 from user.models import Ticket
 
 # Create your views here.
@@ -54,8 +56,21 @@ def eventjson(request, eventid):
     }
     return JsonResponse({'data': event})
 
+def get_zone(request, eventid, showid, zoneid):
+    return render(request, 'event/single_zone.html', {
+        'event': Event.objects.get(pk=eventid),
+        'show': Show.objects.get(pk=showid),
+        'zone': Zone.objects.get(pk=zoneid)
+    })
 
-
+def confirmticket(request, eventid, showid, zoneid):
+    return render(request, 'event/confirmticket.html', {
+        'event': Event.objects.get(pk=eventid),
+        'show': Show.objects.get(pk=showid),
+        'zone': Zone.objects.get(pk=zoneid),
+        'addressform': AddressInfoForm(),
+        'paymentform': PaymentForm()
+    })
 
 
 #Zone.objects.values('id').annotate(Count(Ticket.objects.filter(zone_name_id=id)))

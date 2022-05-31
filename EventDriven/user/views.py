@@ -35,4 +35,4 @@ def register(request):
     return render(request, 'user/register.html', {
         'form': RegisterUserForm()
         })
-    
+

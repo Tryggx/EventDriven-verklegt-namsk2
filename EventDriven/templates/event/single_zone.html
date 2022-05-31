@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>{{ event.name }}</p>
+    <p>{{ event.description }}</p>
+    <p>{{ show.datetime }}</p>
+    <p>Zone: {{ zone.name }}</p>
+    <a href="{{ zone.id }}/confirmation" type="button" class="btn btn-primary">Buy this ticket</a>
+{% endblock %}

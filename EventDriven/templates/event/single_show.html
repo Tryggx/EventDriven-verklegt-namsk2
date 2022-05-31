@@ -6,6 +6,6 @@
     <h1>{{ show.datetime }}</h1>
     <h2>Please Select A zone</h2>
     {% for zone in zones %}
-        <a href="buyticket/{{ zone.id }}" class="btn btn-primary"> {{ zone.name }} <br> {{ zone.price }} kr <br> Available Tickets: {{ zone.availabletickets }}</a>
+        <a href="{{ show.id }}/zones/{{ zone.id }}" class="btn btn-primary"> {{ zone.name }} <br> {{ zone.price }} kr <br> Available Tickets: {{ zone.availabletickets }}</a>
     {% endfor %}
 {% endblock %}
