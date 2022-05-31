@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>{{ header_name }}</h1>
-    <div class="wrapper">
+    <div class="wrapper eventContainer">
         <div id="section1">
         {% for event in events %}
             {% include 'event/single_event_card.html' with event=event %}

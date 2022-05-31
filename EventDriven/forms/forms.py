@@ -4,6 +4,7 @@ from django.forms import widgets
 from user.models import User
 
 
+
 class CustomAuthForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
