@@ -11,6 +11,10 @@ from user.models import Ticket
 
 
 def index(request):
+    if 'search' in request.GET:
+        search_param = request.GET['search']
+        events = list(Event.objects.filter(name__icontains=search_param).values())
+        return JsonResponse({'data': events})
     return render(request, 'event/index.html', context={
         'events':Event.objects.all()
     })

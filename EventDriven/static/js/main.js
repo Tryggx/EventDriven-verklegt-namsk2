@@ -1,8 +1,9 @@
 $(document).ready(function(){
-    $('#testbtn').on('click', function (e){
+    $('#searchbtn').on('click', function (e){
         e.preventDefault();
+        var searchtext = $('#searchbox').val();
         $.ajax({
-            url: '/events/eventjson/1',
+            url: '/events?search=' + searchtext,
             type: 'GET',
             sucess: function(resp){
                 var newHtml = resp.data.map(d =>{
@@ -12,7 +13,7 @@ $(document).ready(function(){
                 })
             },
             error: function(xhr, status, error){
-                console.error(error)
+                console.error(error);
             }
         })
     });
