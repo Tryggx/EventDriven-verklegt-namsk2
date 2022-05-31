@@ -6,9 +6,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="/events">All Events</a>
-        </li>
           {% for type in all_eventtypes %}
               <li class="nav-item">
           <a class="nav-link" href="/eventtypes/{{ type.id }}">{{ type.name }}</a>

@@ -3,6 +3,8 @@
     <h1>{{ event.name }}</h1>
     <h1>{{ event.description }}
     <br>
+    <p>Veldu dagsetningu:</p>
+    <br>
         {% for show in shows %}
     <a class="btn btn-primary" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</a>
     {% endfor %}

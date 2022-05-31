@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -22,10 +23,16 @@ def register(request):
         print("POST REQUEST")
         form = RegisterUserForm(request.POST, request.FILES)
         if form.is_valid():
-            print("VALID FORM")
             form.save()
             return redirect('/users/login')
+        else:
+            messages.info(request, 'invalid registration details')
+            return render(
+                request, 'user/register.html', {
+                    'form': form
+                })
 
     return render(request, 'user/register.html', {
-      'form': RegisterUserForm()
-    })
+        'form': RegisterUserForm()
+        })
+    
