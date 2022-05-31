@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+       <div class="row my-3 p-3">
+        <h1>This is the profile page for {{user.username}}</h1>
+        {%  if user.profile_picture.url is not None %}
+        <img style="width: 200px;" src="{{ user.profile_picture.url }}">
+        {% endif %}
+    </div>
+    </div>
   <nav id="sidebar" class="d-flex align-items-start">
       <nav class="nav flex-column navbar-dark bg-dark">
           <a class="nav-link active" aria-current="page" href="#1">Account settings</a>
@@ -30,7 +37,6 @@
             <h4 class="white">
                 This is {{ user.username }}'s profile page
             </h4>
-            <img src="{{ user.profile_picture }}">
         </div>
 
          <div id="2">
