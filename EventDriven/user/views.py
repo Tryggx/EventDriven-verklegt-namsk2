@@ -13,10 +13,6 @@ def update_user(request):
     instance = get_object_or_404(User, pk=request.user.id)
     editform = UserEditForm(instance=instance)
     passform = ChangePasswordForm(user=request.user)
-    context = {
-        'editform': editform,
-        'passform': passform
-    }
     if request.method == "POST":
         if 'editform' in request.POST:
             editform = UserEditForm(data=request.POST, instance=instance)
@@ -28,7 +24,10 @@ def update_user(request):
             if passform.is_valid():
                 passform.save()
                 return redirect('/users/profile')
-    return render(request, 'user/userprofile.html', context=context)
+    return render(request, 'user/userprofile.html', {
+        'editform': editform,
+        'passform': passform
+    })
 
 @login_required
 def profile(request):
