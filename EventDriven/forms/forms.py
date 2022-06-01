@@ -43,7 +43,7 @@ class RegisterUserForm(UserCreationForm):
         self.fields['username'].help_text = 'Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only.<br>'
 
 class PaymentInfoForm(forms.Form):
-    sendhome = forms.BooleanField(label="I want the ticket sent home", widget=forms.CheckboxInput())
+    sendhome = forms.BooleanField(label="I want the ticket sent home", widget=forms.CheckboxInput(attrs={'id': 'sendhome'}))
     cardholder_name = forms.CharField(label='Name on card', widget=forms.TextInput(attrs={'class': 'form-control'}))
     cardnumber = forms.CharField(label='Card number', widget=forms.TextInput(attrs={'class': 'form-control'}))
     exp_date = forms.CharField(label='Expiration date', max_length=5,
