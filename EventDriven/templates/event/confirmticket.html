@@ -5,18 +5,30 @@
         <p>{{ event.name }}</p>
         <p>{{ show.datetime }}</p>
         <p>Zone: {{ zone.name }}</p>
+        <div class="btn-group">
+            <button id="subbtn" type="button" class="btn btn-primary">-</button>
+            <div id="ticketnum" class="btn btn-primary disabled">1</div>
+            <button type="button" id="addbtn" class="btn btn-primary">+</button>
+        </div>
+        <br>
         <input type="checkbox" id="sendhome" >
         <label for="sendhome" class="white"> I want the ticket sent to my house </label><br>
      </div>
     <br>
+    <form id="bothforms" method="post">
     <div id="paymentform" class="center">
         <p><b>Payment info:</b></p>
+            {% csrf_token %}
         {{ paymentform.as_p }}
+            <button type="submit" class="btn btn-primary">PAYMENT FORM</button>
     </div>
     <br>
     <div id="addressform" class="center" style="display: none;" >
         <p><b>Delivery info:</b></p>
         {{ addressform.as_p }}
+        <button type="submit" formtarget="addressform paymentform" class="btn btn-primary">BOTH FORMS</button>
     </div>
+
+    </form>
     <br><br>
 {% endblock %}

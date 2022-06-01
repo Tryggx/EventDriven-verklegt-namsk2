@@ -5,3 +5,8 @@ $("#sendhome").change(function() {
         $("#addressform").hide();
     }
 });
+
+$("#btnadd").on('click', function (e){
+    e.preventDefault();
+    var amount = parseInt($("#ticketnum").text())
+})
