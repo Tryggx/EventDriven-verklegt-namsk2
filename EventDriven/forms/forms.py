@@ -1,6 +1,6 @@
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django import forms
-from django.forms import widgets
+from django.forms import widgets, ModelForm
 from user.models import User
 from django_countries import countries
 
@@ -43,14 +43,40 @@ class RegisterUserForm(UserCreationForm):
         self.fields['username'].help_text = 'Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only.<br>'
 
 class AddressInfoForm(forms.Form):
-        name = forms.CharField(label='Full name', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-        address = forms.CharField(label='Address', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-        city = forms.CharField(label='City', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-        country = forms.ChoiceField(choices=COUNTRY_CHOICES, widget=widgets.Select(attrs={'class': 'form-control'}))
-        zip = forms.CharField(label='Postal code', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    name = forms.CharField(label='Full name', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    address = forms.CharField(label='Address', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    city = forms.CharField(label='City', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    country = forms.ChoiceField(choices=COUNTRY_CHOICES, widget=widgets.Select(attrs={'class': 'form-control'}))
+    zip = forms.CharField(label='Postal code', widget=forms.TextInput(attrs={'class': 'form-control'}))
+
 
 class PaymentForm(forms.Form):
-    cardholder_name = forms.CharField(label='Name on card', widget=forms.TextInput(attrs={'class':'form-control'}))
+    cardholder_name = forms.CharField(label='Name on card', widget=forms.TextInput(attrs={'class': 'form-control'}))
     cardnumber = forms.CharField(label='Card number', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    exp_date = forms.CharField(label='Expiration date', max_length=5, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    cvc = forms.IntegerField(label='CVC (on back of card)', max_value=999, widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    exp_date = forms.CharField(label='Expiration date', max_length=5,
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+    cvc = forms.IntegerField(label='CVC (on back of card)', max_value=999,
+                             widget=forms.NumberInput(attrs={'class': 'form-control'}))
+
+
+class UserEditForm(ModelForm):
+    class Meta:
+        model = User
+        exclude = ['id', 'password', 'last_name', 'is_superuser', 'groups', 'last_login', 'user_permissions', 'is_staff', 'is_active']
+        widgets = {
+            'first_name': widgets.TextInput(attrs={'class': 'form-control'}),
+            'last_name': widgets.TextInput(attrs={'class': 'form-control'}),
+            'date_of_birth': widgets.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'email': widgets.TextInput(attrs={'class': 'form-control'}),
+            'profile_picture': widgets.ClearableFileInput(attrs={'class': 'form-control'}),
+
+        }
+
+class ChangePasswordForm(PasswordChangeForm):
+    class Meta(PasswordChangeForm):
+        model = User
+        widgets ={
+            'new_password1': widgets.TextInput(attrs={'class': 'form-control'}),
+            'new_password2': widgets.TextInput(attrs={'class': 'form-control'}),
+            'old_password': widgets.TextInput(attrs={'class': 'form-control'}),
+        }

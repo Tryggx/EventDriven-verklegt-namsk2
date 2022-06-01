@@ -10,6 +10,8 @@ urlpatterns = [
         name="login_page"),
     path('register', views.register, name="register"),
     path('logout', LogoutView.as_view(next_page='login_page'), name='logout'),
+    path('edituser', views.update_user, name="edit_user"),
     path('profile', views.profile, name='users_profile'),
+    #path('changepassword', views.change_password, name='change_password')
 
 ]
