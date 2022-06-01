@@ -46,8 +46,7 @@ class RegisterUserForm(UserCreationForm):
 
 class AddressInfoForm(forms.Form):
         name = forms.CharField(label='Full name', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-        street_name = forms.CharField(label='Street name', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-        house_num = forms.CharField(label='House number', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
+        address = forms.CharField(label='Address', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
         city = forms.CharField(label='City', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
         country = forms.ChoiceField(choices=COUNTRY_CHOICES, widget=widgets.Select(attrs={'class': 'form-control'}))
         zip = forms.CharField(label='Postal code', widget=forms.TextInput(attrs={'class': 'form-control'}))

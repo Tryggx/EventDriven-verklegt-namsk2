@@ -8,12 +8,15 @@
         <input type="checkbox" id="sendhome" >
         <label for="sendhome" class="white"> I want the ticket sent to my house </label><br>
      </div>
-    <div id="addressform" class="center" style="display: none;" >
-    {{ addressform.as_p }}
-    </div>
     <br>
     <div id="paymentform" class="center">
-    <p>Payment info:</p>
-    {{ paymentform.as_p }}
+        <p><b>Payment info:</b></p>
+        {{ paymentform.as_p }}
     </div>
+    <br>
+    <div id="addressform" class="center" style="display: none;" >
+        <p><b>Delivery info:</b></p>
+        {{ addressform.as_p }}
+    </div>
+    <br><br>
 {% endblock %}
