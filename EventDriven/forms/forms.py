@@ -43,18 +43,18 @@ class RegisterUserForm(UserCreationForm):
         self.fields['username'].help_text = 'Required. 25 characters or fewer. Letters, digits and @/./+/-/_ only.<br>'
 
 class PaymentInfoForm(forms.Form):
-    sendhome = forms.BooleanField(label="I want the ticket sent home", widget=forms.CheckboxInput(attrs={'id': 'sendhome'}))
+    sendhome = forms.BooleanField(required=False, label="I want the ticket sent home", widget=forms.CheckboxInput(attrs={'id': 'sendhome'}))
     cardholder_name = forms.CharField(label='Name on card', widget=forms.TextInput(attrs={'class': 'form-control'}))
     cardnumber = forms.CharField(label='Card number', widget=forms.TextInput(attrs={'class': 'form-control'}))
     exp_date = forms.CharField(label='Expiration date', max_length=5,
                                widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'exp'}))
     cvc = forms.IntegerField(label='CVC (on back of card)', max_value=999,
                              widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    name = forms.CharField(label='Full name', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    address = forms.CharField(label='Address', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    city = forms.CharField(label='City', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    country = forms.ChoiceField(choices=COUNTRY_CHOICES, widget=widgets.Select(attrs={'class': 'form-control'}))
-    zip = forms.CharField(label='Postal code', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    name = forms.CharField(required=False, label='Full name', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    address = forms.CharField(required=False, label='Address', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    city = forms.CharField(required=False, label='City', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    country = forms.ChoiceField(required=False, choices=COUNTRY_CHOICES, widget=widgets.Select(attrs={'class': 'form-control'}))
+    zip = forms.CharField(required=False, label='Postal code', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 
 class PaymentForm(forms.Form):

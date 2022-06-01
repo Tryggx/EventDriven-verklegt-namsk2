@@ -20,11 +20,12 @@
         <p><b>Payment info:</b></p>
             {% csrf_token %}
         {{ paymentinfoform.as_p }}
-
-    </div>
+        <div class="d-grid gap-2">
+        <button type="submit" name="addressform paymentform" class="btn btn-primary">Confirm Order</button>
+        </div>
+        </div>
     <br>
 
-    <button type="submit" name="addressform paymentform" class="btn btn-primary">BOTH FORMS</button>
     </form>
     <br><br>
 
