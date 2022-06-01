@@ -27,6 +27,24 @@ $("#sendhome").change(function() {
     }
 });
 
+
+$("#sendhome").change(function() {
+    if ( $(this).is(':checked') ) {
+        $("#id_name").attr('required', true);
+        $("#id_address").attr('required',true);
+        $("#id_city").attr('required',true);
+        $("#id_country").attr('required',true);
+        $("#id_zip").attr('required',true);
+    }
+    else {
+        $("#id_name").removeAttr('required');
+        $("#id_address").removeAttr('required');
+        $("#id_city").removeAttr('required');
+        $("#id_country").removeAttr('required');
+        $("#id_zip").removeAttr('required');
+    }
+});
+
 $("#btnadd").on('click', function (e){
     e.preventDefault();
     var amount = parseInt($("#ticketnum").text())
