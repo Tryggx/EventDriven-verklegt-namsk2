@@ -67,6 +67,30 @@ p, h2{
     background-color: rgba(22,22,22, 0.85)!important;
 }
 
+
+#sidebar {
+    position: fixed;
+    margin-left:50px;
+    margin-top:-250px
+}
+
+.nav-link {
+    color: white !important;
+
+}
+
+.nav > .nav-link {
+    margin-top:10px;
+}
+
+.bg-dark {
+    --bs-bg-opacity: 0;
+}
+
+.active {
+    font-weight:600;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: repeat(3,100%);
