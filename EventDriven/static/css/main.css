@@ -61,6 +61,7 @@ p, h2{
     margin-left: 10px;
     color: white;
     font-family: 'Gotham', sans-serif;
+    border-color: #404040;
 }
 
 .navbar {
@@ -262,4 +263,22 @@ Change the input style of form-control
 
 .errorlist {
     color: red;
+}
+
+
+
+#id_name, label[for='id_name']{
+    display:none;
+}
+#id_address, label[for='id_address']{
+    display:none;
+}
+#id_city, label[for='id_city'] {
+    display:none;
+}
+#id_country, label[for='id_country']{
+    display:none;
+}
+#id_zip, label[for='id_zip']{
+    display:none;
 }

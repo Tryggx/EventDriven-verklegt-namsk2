@@ -1,8 +1,29 @@
 $("#sendhome").change(function() {
     if ( $(this).is(':checked') ) {
         $("#addressform").show();
+
+        $("label[for='id_name']").css('display','inline-block');
+        $("#id_name").css('display','inline-block');
+        $("label[for='id_address']").css('display','inline-block');
+        $("#id_address").css('display','inline-block');
+        $("label[for='id_city']").css('display','inline-block');
+        $("#id_city").css('display','inline-block');
+        $("label[for='id_country']").css('display','inline-block');
+        $("#id_country").css('display','inline-block');
+        $("label[for='id_zip']").css('display','inline-block');
+        $("#id_zip").css('display','inline-block');
     } else {
-        $("#addressform").hide();
+        $("#addressform").hide()
+        $("label[for='id_name']").css('display','none');
+        $("#id_name").css('display','none');
+        $("label[for='id_address']").css('display','none');
+        $("#id_address").css('display','none');
+        $("label[for='id_city']").css('display','none');
+        $("#id_city").css('display','none');
+        $("label[for='id_country']").css('display','none');
+        $("#id_country").css('display','none');
+        $("label[for='id_zip']").css('display','none');
+        $("#id_zip").css('display','none');
     }
 });
 
@@ -45,9 +66,6 @@ $('.btn-number').click(function(e){
     }
 });
 
-$('.input-number').focusin(function(){
-   $(this).data('oldValue', $(this).val());
-});
 $('.input-number').change(function() {
 
     minValue =  parseInt($(this).attr('min'));
