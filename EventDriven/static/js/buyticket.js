@@ -58,14 +58,18 @@ $('.input-number').change(function() {
     if(valueCurrent >= minValue) {
         $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
     } else {
-        alert('Sorry, the minimum value was reached');
-        $(this).val($(this).data('oldValue'));
+        //alert('Sorry, the minimum value was reached');
+        $(this).val('1');
+        $(".btn-number[data-type='plus']").removeAttr('disabled')
+        $(".btn-number[data-type='minus']").attr('disabled', true);
     }
     if(valueCurrent <= maxValue) {
         $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
     } else {
-        alert('Sorry, the maximum value was reached');
-        $(this).val($(this).data('oldValue'));
+        //alert('Sorry, the maximum value was reached');
+        $(this).val('10');
+        $(".btn-number[data-type='minus']").removeAttr('disabled')
+        $(".btn-number[data-type='plus']").attr('disabled', true);
     }
 
 
