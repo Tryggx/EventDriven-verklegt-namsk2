@@ -2,11 +2,9 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django import forms
 from django.forms import widgets
 from user.models import User
+from django_countries import countries
 
-COUNTRY_CHOICES=[
-    ('iceland', 'Iceland' ),
-    ('denmark', 'Denmark')
-]
+COUNTRY_CHOICES = countries
 
 
 class CustomAuthForm(AuthenticationForm):

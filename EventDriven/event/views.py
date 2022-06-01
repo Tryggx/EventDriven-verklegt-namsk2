@@ -64,6 +64,12 @@ def get_zone(request, eventid, showid, zoneid):
     })
 
 def confirmticket(request, eventid, showid, zoneid):
+    if request.method == 'POST':
+        forms = request.POST
+        print('post request from ticketsite')
+        return render(request, 'event/orderconfirmed.html', {
+            'forms': forms
+        })
     return render(request, 'event/confirmticket.html', {
         'event': Event.objects.get(pk=eventid),
         'show': Show.objects.get(pk=showid),
@@ -71,6 +77,8 @@ def confirmticket(request, eventid, showid, zoneid):
         'addressform': AddressInfoForm(),
         'paymentform': PaymentForm()
     })
+
+
 
 
 #Zone.objects.values('id').annotate(Count(Ticket.objects.filter(zone_name_id=id)))
