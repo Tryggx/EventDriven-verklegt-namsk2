@@ -12,6 +12,11 @@ $("#sendhome").change(function() {
         $("#id_country").css('display','inline-block');
         $("label[for='id_zip']").css('display','inline-block');
         $("#id_zip").css('display','inline-block');
+        $("#id_name").attr('required', true);
+        $("#id_address").attr('required',true);
+        $("#id_city").attr('required',true);
+        $("#id_country").attr('required',true);
+        $("#id_zip").attr('required',true);
     } else {
         $("#addressform").hide()
         $("label[for='id_name']").css('display','none');
@@ -24,19 +29,6 @@ $("#sendhome").change(function() {
         $("#id_country").css('display','none');
         $("label[for='id_zip']").css('display','none');
         $("#id_zip").css('display','none');
-    }
-});
-
-
-$("#sendhome").change(function() {
-    if ( $(this).is(':checked') ) {
-        $("#id_name").attr('required', true);
-        $("#id_address").attr('required',true);
-        $("#id_city").attr('required',true);
-        $("#id_country").attr('required',true);
-        $("#id_zip").attr('required',true);
-    }
-    else {
         $("#id_name").removeAttr('required');
         $("#id_address").removeAttr('required');
         $("#id_city").removeAttr('required');
@@ -44,6 +36,7 @@ $("#sendhome").change(function() {
         $("#id_zip").removeAttr('required');
     }
 });
+
 
 $("#btnadd").on('click', function (e){
     e.preventDefault();
@@ -89,7 +82,7 @@ $('.input-number').change(function() {
     minValue =  parseInt($(this).attr('min'));
     maxValue =  parseInt($(this).attr('max'));
     valueCurrent = parseInt($(this).val());
-
+    $('#num_tickets').val(valueCurrent);
     name = $(this).attr('name');
     if(valueCurrent >= minValue) {
         $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
