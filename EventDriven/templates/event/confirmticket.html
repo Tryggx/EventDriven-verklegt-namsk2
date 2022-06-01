@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content%}
-    <div class="center">
-        <p>{{ event.name }}</p>
+    <div class="center form-horizontal" >
+        <h1 style="margin: 0px">{{ event.name }}</h1>
         <p>{{ show.datetime }}</p>
         <p>Zone: {{ zone.name }}</p>
         <div class="btn-group">
-            <button id="subbtn" type="button" class="btn btn-primary">-</button>
-            <div id="ticketnum" class="btn btn-primary disabled">1</div>
-            <button type="button" id="addbtn" class="btn btn-primary">+</button>
+            <button id="subbtn" type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">-</button>
+            <input type="text" id="ticketnum" class="btn btn-primary input-number" value="1" min="1" max="10" style="width:50px"/>
+            <button type="button" id="addbtn" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">+</button>
         </div>
         <br>
         <input type="checkbox" id="sendhome" >
@@ -16,14 +16,14 @@
      </div>
     <br>
     <form id="bothforms" method="post">
-    <div id="paymentform" class="center">
+    <div id="paymentform" class="center form-horizontal">
         <p><b>Payment info:</b></p>
             {% csrf_token %}
         {{ paymentform.as_p }}
             <button action="{{url}}/confirmation" name="paymentform" type="submit" class="btn btn-primary">PAYMENT FORM</button>
     </div>
     <br>
-    <div id="addressform" class="center" style="display: none;" >
+    <div id="addressform" class="center form-horizontal" style="display: none;" >
         <p><b>Delivery info:</b></p>
         {{ addressform.as_p }}
         <button action="{{url}}/confirmation" type="submit" name="addressform paymentform" class="btn btn-primary">BOTH FORMS</button>

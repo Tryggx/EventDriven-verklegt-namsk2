@@ -54,7 +54,7 @@ class PaymentForm(forms.Form):
     cardholder_name = forms.CharField(label='Name on card', widget=forms.TextInput(attrs={'class': 'form-control'}))
     cardnumber = forms.CharField(label='Card number', widget=forms.TextInput(attrs={'class': 'form-control'}))
     exp_date = forms.CharField(label='Expiration date', max_length=5,
-                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'exp'}))
     cvc = forms.IntegerField(label='CVC (on back of card)', max_value=999,
                              widget=forms.NumberInput(attrs={'class': 'form-control'}))
 

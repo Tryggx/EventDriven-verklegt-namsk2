@@ -10,7 +10,7 @@ html {
     left:0;
     right:0;
     z-index:-1;
-    box-shadow: inset 0px 0px 200px 40px rgba(82, 15, 92, 0.15);
+    box-shadow: inset 0px 0px 100px 0px rgba(82, 15, 92, 0.6);
 }
 body {
     margin: 0;
@@ -225,7 +225,9 @@ Change the input style of form-control
     font-family: 'Gotham', sans-serif;
 
 }
-
+.form-horizontal > .p {
+    margin-top: 20px;
+}
 #id_username.form-control{
     width: 100%;
 
