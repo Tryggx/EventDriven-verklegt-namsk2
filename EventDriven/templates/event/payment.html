@@ -19,10 +19,14 @@
         </div>
         <p><b>Payment info:</b></p>
             {% csrf_token %}
+        <form>
         {{ paymentinfoform.as_p }}
+            <input id="num_tickets" name="num_tickets" type="text" style="display: none">
+        </form>
         <div class="d-grid gap-2">
         <button type="submit" name="addressform paymentform" class="btn btn-primary">Confirm Order</button>
         </div>
+        </form>
         </div>
     <br>
 
