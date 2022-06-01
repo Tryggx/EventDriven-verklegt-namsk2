@@ -12,43 +12,45 @@ User = get_user_model()
 def update_user(request):
     instance = get_object_or_404(User, pk=request.user.id)
     editform = UserEditForm(instance=instance)
-    passform = ChangePasswordForm(user=request.user)
+    #passform = ChangePasswordForm(user=request.user)
     if request.method == "POST":
         if 'editform' in request.POST:
             editform = UserEditForm(data=request.POST, instance=instance)
             if editform.is_valid():
                 editform.save()
                 return redirect('/users/profile')
-        if 'passform' in request.POST:
-            passform = ChangePasswordForm(data=request.POST, user=request.user)
-            if passform.is_valid():
-                passform.save()
-                return redirect('/users/profile')
+    #    if 'passform' in request.POST:
+     #       passform = ChangePasswordForm(data=request.POST, user=request.user)
+      #      if passform.is_valid():
+       #         passform.save()
+        #        return redirect('/users/profile')
     return render(request, 'user/userprofile.html', {
         'editform': editform,
-        'passform': passform
+        #'passform': passform
     })
 
 @login_required
 def profile(request):
+    instance = get_object_or_404(User, pk=request.user.id)
     return render(request, 'user/userprofile.html', {
         'tickets': Ticket.objects.filter(userid=request.user.id),
-        'events': Event.objects.all()
+        'events': Event.objects.all(),
+        'editform': UserEditForm(instance=instance)
     })
 
 
 
-#def change_password(request):
-#    if request.method == "POST":
-#        form = ChangePasswordForm(data=request.POST, user=request.user )
-#        if form.is_valid():
-#            form.save()
-#            return redirect('/users/profile')
-#    else:
-#        form = ChangePasswordForm(user = request.user)
-#    return render(request, 'user/change_password.html', {
-#        "passform": form
-#    })
+def change_password(request):
+    if request.method == "POST":
+        form = ChangePasswordForm(data=request.POST, user=request.user )
+        if form.is_valid():
+            form.save()
+            return redirect('/users/profile')
+    else:
+        form = ChangePasswordForm(user = request.user)
+    return render(request, 'user/change_password.html', {
+        "passform": form
+    })
 def register(request):
     if request.method == 'POST':
         print("POST REQUEST")

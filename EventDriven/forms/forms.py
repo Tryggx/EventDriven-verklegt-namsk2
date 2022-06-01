@@ -62,7 +62,8 @@ class PaymentForm(forms.Form):
 class UserEditForm(ModelForm):
     class Meta:
         model = User
-        exclude = ['id', 'password', 'last_name', 'is_superuser', 'groups', 'last_login', 'user_permissions', 'is_staff', 'is_active']
+        exclude = ['id', 'password', 'last_name', 'is_superuser', 'groups', 'last_login', 'user_permissions',
+                   'is_staff', 'is_active', 'date_joined']
         widgets = {
             'first_name': widgets.TextInput(attrs={'class': 'form-control'}),
             'last_name': widgets.TextInput(attrs={'class': 'form-control'}),
