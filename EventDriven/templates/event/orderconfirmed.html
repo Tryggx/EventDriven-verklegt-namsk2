@@ -1,4 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    {{ forms }}
+    <div class="center white">
+    <h4>Order Confirmed</h4>
+        {% if addressform.data['address'] %}
+            {% sendhome='Email' %}
+        {% else %}
+            {% sendhome='Mail' %}
+        {% endif %}
+        <p>you will receive your tickets by {% sendhome %} </p>
+        <p>Order information</p>
+        {{ paymentform }}
+        <hr>
+    {{ addressform }}
+    </div>-->
 {% endblock %}

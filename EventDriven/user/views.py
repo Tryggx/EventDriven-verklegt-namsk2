@@ -47,7 +47,7 @@ def change_password(request):
             form.save()
             return redirect('/users/profile')
     else:
-        form = ChangePasswordForm(user = request.user)
+        form = ChangePasswordForm(user=request.user)
     return render(request, 'user/change_password.html', {
         "passform": form
     })

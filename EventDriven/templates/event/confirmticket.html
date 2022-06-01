@@ -20,13 +20,13 @@
         <p><b>Payment info:</b></p>
             {% csrf_token %}
         {{ paymentform.as_p }}
-            <button type="submit" class="btn btn-primary">PAYMENT FORM</button>
+            <button action="{{url}}/confirmation" name="paymentform" type="submit" class="btn btn-primary">PAYMENT FORM</button>
     </div>
     <br>
     <div id="addressform" class="center" style="display: none;" >
         <p><b>Delivery info:</b></p>
         {{ addressform.as_p }}
-        <button type="submit" formtarget="addressform paymentform" class="btn btn-primary">BOTH FORMS</button>
+        <button action="{{url}}/confirmation" type="submit" name="addressform paymentform" class="btn btn-primary">BOTH FORMS</button>
     </div>
 
     </form>
