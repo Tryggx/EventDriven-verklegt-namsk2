@@ -1,9 +1,11 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django import forms
 from django.forms import widgets, ModelForm
-from user.models import User
+from user.models import User, Likes
 from django_countries import countries
-
+from event.models import EventType
+from django.contrib.auth import get_user_model
+User = get_user_model()
 COUNTRY_CHOICES = countries
 
 
@@ -65,8 +67,16 @@ class PaymentForm(forms.Form):
     cvc = forms.IntegerField(label='CVC (on back of card)', max_value=999,
                              widget=forms.NumberInput(attrs={'class': 'form-control'}))
 
+category_choices = (
+    ('concerts', 'Concerts' ),
+    ('theater', 'Theater' ),
+    ('standup', 'Stand-up' ),
+)
 
 class UserEditForm(ModelForm):
+    favorite_categories = forms.MultipleChoiceField(choices=EventType.objects.values_list(),
+                                                         widget=forms.CheckboxSelectMultiple)
+
     class Meta:
         model = User
         exclude = ['id', 'password', 'last_name', 'is_superuser', 'groups', 'last_login', 'user_permissions',
@@ -77,6 +87,7 @@ class UserEditForm(ModelForm):
             'date_of_birth': widgets.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'email': widgets.TextInput(attrs={'class': 'form-control'}),
             'profile_picture': widgets.ClearableFileInput(attrs={'class': 'form-control'}),
+
 
         }
 
