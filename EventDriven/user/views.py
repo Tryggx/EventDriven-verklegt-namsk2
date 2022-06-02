@@ -8,7 +8,8 @@ from django.shortcuts import render, redirect
 from django import forms
 from forms.forms import RegisterUserForm, UserEditForm, ChangePasswordForm
 from user.models import Ticket, Likes
-from event.models import Event, EventType
+from event.models import Event, EventType, Show
+
 User = get_user_model()
 
 def update_user(request):
@@ -38,11 +39,13 @@ def update_user(request):
 def profile(request):
     instance = get_object_or_404(User, pk=request.user.id)
     likes = Likes.objects.filter(userid=request.user.id)
+    tickets = Ticket.objects.filter(userid=request.user.id)
     list = []
     for i in likes:
         list.append(str(i.likestype_id))
     return render(request, 'user/userprofile.html', {
-        'tickets': Ticket.objects.filter(userid=request.user.id),
+        'tickets': tickets,
+        'shows': Show.objects.filter(ticket__userid_id=request.user.id).distinct(),
         'events': Event.objects.all(),
         'editform': UserEditForm(instance=instance, initial={"favorite_categories": list}),
         'likes': Likes.objects.all()
