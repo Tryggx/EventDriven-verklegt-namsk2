@@ -1,18 +1,31 @@
 {% extends 'base.html' %}
 {% load tz %}
 {% block content %}
-    <h1>{{ event.name }}</h1>
-    <h1>{{ event.description }} </h1>
-    <br>
-    <p>Veldu dagsetningu:</p>
-    <br>
-        {% for show in shows %}
-            {% if show.datetime|date:"YmdHis" > today|date:"YmdHis" and show.availabletickets > 0 %}
-                <a class="btn btn-primary" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</a>
-            {% elif show.availabletickets == 0 %}
-                 <a class="btn btn-primary disabled" > {{ show.datetime }} <br><br>Available Tickets: 0</a>
-            {% else %}
-                <a class="btn btn-primary disabled" > {{ show.datetime }} <br><br>Event has passed</a>
-            {% endif %}
-        {% endfor %}
+    <div class="eventheaderimg">
+        <img src=" {{ event.header_image }}">
+    </div>
+
+    <div class="eventcontainer">
+        <h1 id="title">{{ event.name }}</h1>
+        <h1 id="desc">{{ event.description }} </h1>
+        <br>
+
+    <div class="showcontainer">
+        <p>Veldu dagsetningu:</p>
+        <br>
+    <div class="showbuttoncontainer">
+            {% for show in shows %}
+                <div class="showbutton">
+                {% if show.datetime|date:"YmdHis" > today|date:"YmdHis" and show.availabletickets > 0 %}
+                    <a class="btn btn-primary" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</a>
+                {% elif show.availabletickets == 0 %}
+                     <a class="btn btn-primary disabled" > {{ show.datetime }} <br><br>Available Tickets: 0</a>
+                {% else %}
+                    <a class="btn btn-primary disabled" > {{ show.datetime }} <br><br>Event has passed</a>
+                {% endif %}
+                </div>
+            {% endfor %}
+    </div>
+    </div>
+    </div>
 {% endblock %}
