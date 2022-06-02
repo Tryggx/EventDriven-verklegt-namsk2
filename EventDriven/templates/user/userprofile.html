@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
        <div class="row my-3 p-3 center">
-        <h1>This is the profile page for {{user.username}}</h1>
-        {%  if user.profile_picture.url is not None %}
-        <img style="width: 200px;" src="{{ user.profile_picture.url }}">
-        {% endif %}
+        <div class="userdetails">
+            {%  if user.profile_picture.url is not None %}
+                <div class="profilepiccontainer">
+                    <img class="profilepic" src="{{ user.profile_picture.url }}">
+                </div>
+            {% endif %}
+        <div class="textdetails">
+            <h1 class="userinfo">{{user.username}}</h1>
+            <h1 class="userinfo">{{user.password}}</h1>
+        </div>
+        </div>
     </div>
   <nav id="sidebar" class="navbar align-items-stretch p-3">
       <nav class="nav nav-pills flex-column navbar-dark bg-dark">
