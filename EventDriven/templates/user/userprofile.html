@@ -8,14 +8,16 @@
                 </div>
             {% endif %}
         <div class="textdetails">
-            <h1 class="userinfo">{{user.username}}</h1>
-            <h1 class="userinfo">{{user.password}}</h1>
+            <h1 class="userinfo">Username: {{user.username}}</h1>
+            <h1 class="userinfo">Name: {{user.first_name}} {{user.last_name}}</h1>
+            <h1 class="userinfo">Joined:  {{user.date_joined}}</h1>
+            <h1 class="userinfo">Date of Birth:  {{user.date_of_birth}}</h1>
         </div>
         </div>
     </div>
   <nav id="sidebar" class="navbar align-items-stretch p-3">
       <nav class="nav nav-pills flex-column navbar-dark bg-dark">
-          <a class="nav-link" aria-current="page" href="#1">Account settings</a>
+          <a class="nav-link" aria-current="page" href="#navbarSupportedContent">Account settings</a>
           <a class="nav-link" href="#2">My tickets</a>
           <a class="nav-link" href="#3">Liked categories</a>
           <a class="nav-link" href="#4"><!--"/users/edituser"-->Edit user</a>
@@ -38,16 +40,19 @@
   <h4 id="item-3">Item 3</h4>
   <p>...</p>
 </div>-->
+    <br><br>
     <div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" tabindex="0">
          <div id="2">
              <div class="center white">
-                 <h4>{{ user.username }}'s tickets</h4>
+                 <h4>Your tickets</h4>
+                 <div class="wrapper">
+                     <div id="section1">
                     {% for event in events %}
                         {% for show in shows %}
                             {% if show.eventid == event %}
                             <div>
-                                 <a data-bs-toggle="modal" data-bs-target="#modal{{ show.id }}" href="#modal{{ show.id }}"> {{ event.name }} {{ show.datetime }}</a>
-                            </div>
+                                {% include 'event/single_show_card.html' with event=event %}
+                                </div>
                                 <div class="modal fade modal-lg" id="modal{{ show.id }}" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -68,16 +73,17 @@
                             {% endif %}
                     {% endfor %}
              {% endfor %}
-
+                     </div>
+                 </div>
              </div>
         </div>
         <hr>
         <div id="3" class="white center">
              <h4> Favorite categories </h4>
             {% for like in likes %}
-                <a> {{ like.likestype }} </a>
+                <h1 class="likes"> {{ like.likestype }} </h1>
             {% endfor %}
-
+        <br><br>
 
         </div>
         <hr>
@@ -92,6 +98,7 @@
              </div>
          </div>
         <hr>
+        <br><br>
          <!--<div id="4">
             <div class="center">
                 <form class="form form-horizontal white" method="post" enctype="multipart/form-data">

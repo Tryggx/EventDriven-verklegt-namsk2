@@ -64,15 +64,15 @@ p, h2{
     border-color: #404040;
 }
 
-.navbar {
+.navbar-expand-lg {
     background-color: rgba(22,22,22, 0.85)!important;
 }
 
-
 #sidebar {
     position: fixed;
-    margin-left:50px;
-    margin-top:-250px
+    margin-left: 4vw;
+    margin-top:-200px;
+    padding: 0px;
 }
 
 .nav-link {
@@ -381,16 +381,33 @@ footer {
     margin: 5px 25px 20px 0px;
 }
 
+.likes{
+    font-weight: normal;
+    font-size: 1.1rem;
+}
+
 .showbutton a {
     width:200px;
     height:90px;
     background-color: gray;
-    border-color: gray;
+    border: 2px solid #404040;
 }
 .showbutton a:hover{
-    color:#161616;
+    color:#272727;
     background-color: white;
 }
+
+.showbutton a{
+    background-color: #272727;
+    color:white;
+}
+
+.showbutton .disabled {
+    background-color: #161616;
+    color:white;
+    border: 2px solid #404040;
+}
+
 
 
 .profilepiccontainer {
