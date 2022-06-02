@@ -82,7 +82,10 @@ $('.input-number').change(function() {
     minValue =  parseInt($(this).attr('min'));
     maxValue =  parseInt($(this).attr('max'));
     valueCurrent = parseInt($(this).val());
+
     $('#num_tickets').val(valueCurrent);
+    $('#price').text(valueCurrent*singleTicketPrice);
+    $('#total_price').val(valueCurrent*singleTicketPrice);
     name = $(this).attr('name');
     if(valueCurrent >= minValue) {
         $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
@@ -118,3 +121,4 @@ $(".input-number").keydown(function (e) {
             e.preventDefault();
         }
     });
+

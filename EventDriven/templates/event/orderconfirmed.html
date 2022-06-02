@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="center white">
-    <h4>Order Confirmed</h4>
+    <h4>Order Confirmed!</h4>
+        <img src="{{ event.header_image }}">
+        {{ event.name }}
+        {{ show.datetime }}
+        {{ zone.name }}
+        {{ forms.num_tickets }}
+        {{ forms.total_price }}
+        {% if forms.sendhome == 'on' %}
+            Your ticket{% if forms.num_tickets|add:'0' > 1 %}s{% endif %}
+            will be sent to {{ forms.address }} in {{ forms.country }}
+            You will also get an email with your ticket{% if forms.num_tickets|add:'0' > 1 %}s{% endif %}
+            {% else %}
+            Your tickets will be sent by email to {{ user.email }}
+        {% endif %}
+        <p>
+        All tickets are accessible in your profile page.
 
-    {{ forms.name }}
-    {{ forms }}
+        </p>
     </div>-->
 {% endblock %}

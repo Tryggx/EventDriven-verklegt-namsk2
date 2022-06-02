@@ -6,7 +6,7 @@ from event.models import Event, Show, EventType, Zone
 from sql_util.utils import SubqueryAggregate
 
 from forms.forms import PaymentInfoForm
-from user.models import Ticket
+from user.models import Ticket, User
 
 # Create your views here.
 
@@ -73,9 +73,19 @@ def confirmticket(request, eventid, showid, zoneid):
           #  'paymentform': paymentform
          #   })
         forms = request.POST
+        for i in range(int(forms.get('num_tickets'))):
+            user = User.objects.get(pk=request.user.id)
+            zone = Zone.objects.get(pk=zoneid)
+            show = Show.objects.get(pk=showid)
+            newTicket = Ticket(showid=show, zone_name=zone, userid=user)
+            newTicket.save()
         print('post request from ticketsite')
         return render(request, 'event/orderconfirmed.html', {
-            'forms': forms
+            'forms': forms,
+            'event': Event.objects.get(pk=eventid),
+            'show': Show.objects.get(pk=showid),
+            'zone': Zone.objects.get(pk=zoneid)
+
         })
     return render(request, 'event/payment.html', {
         'event': Event.objects.get(pk=eventid),
