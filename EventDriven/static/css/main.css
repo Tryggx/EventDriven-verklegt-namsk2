@@ -175,7 +175,23 @@ p, h2{
       }
 
 
+
 .headlineimg {
+    top:0;
+    transform:translate(0,-25%);
+    transform-origin: 50% 300%;
+    min-width: 100%;
+    min-height:100%;
+    max-width:100%;
+    align-items:center;
+    justify-content:center;
+    transition: 250ms all;
+}
+
+.headlineEvent {
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 8px;
@@ -184,16 +200,17 @@ p, h2{
     height: 50vh;
 
     overflow: hidden;
-    object-fit: cover;
 }
 
-.headlineimg:hover img{
-    -webkit-transform: scale(1.15);
-    -moz-transform: scale(1.15);
-    -ms-transform: scale(1.15);
-    -o-transform: scale(1.15);
-    transform: scale(1.15);
+.headlineimg:hover {
+
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
 }
+
 
 .close {
     margin-top: -15px;
@@ -308,6 +325,13 @@ Change the input style of form-control
     border-color: #404040;
 }
 
+footer {
+    margin-top: auto;
+}
+
+#content {
+    min-height: 87.99vh;
+}
 
 #id_name, label[for='id_name']{
     display:none;
