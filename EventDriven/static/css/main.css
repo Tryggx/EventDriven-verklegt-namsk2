@@ -265,6 +265,14 @@ Change the input style of form-control
     color: red;
 }
 
+.nav-item img {
+    margin-top:-20px;
+    margin-bottom:-15px;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+}
+
 
 
 #id_name, label[for='id_name']{

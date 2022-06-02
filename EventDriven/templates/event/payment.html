@@ -8,30 +8,29 @@
         <h1 style="margin: 0px">{{ event.name }}</h1>
         <p>{{ show.datetime }}</p>
         <p>Zone: {{ zone.name }}</p>
-
         <br>
-     </div>
+    </div>
     <br>
     <form id="bothforms" method="post">
 
-    <div id="paymentform" class="center form-horizontal">
-          <div class="btn-group">
-            <button id="subbtn" type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">-</button>
-            <input type="text" id="ticketnum" class="btn btn-primary input-number" value="1" min="1" max="10" style="width:50px"/>
-            <button type="button" id="addbtn" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">+</button>
-              <p>Price: </p><p id="price">{{ zone.price }}</p><p>kr</p>
-        </div>
-        <p><b>Payment info:</b></p>
-            {% csrf_token %}
-        <form>
-        {{ paymentinfoform.as_p }}
-            <input id="num_tickets" name="num_tickets" type="text" style="display: none" value="1">
-            <input id="total_price" name="total_price" type="text" style="display: none" value="{{ zone.price }}">
-        </form>
-        <div class="d-grid gap-2">
-        <button type="submit" name="addressform paymentform" class="btn btn-primary">Confirm Order</button>
-        </div>
-        </form>
+        <div id="paymentform" class="center form-horizontal">
+              <div class="btn-group">
+                <button id="subbtn" type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">-</button>
+                <input type="text" id="ticketnum" class="btn btn-primary input-number" value="1" min="1" max="10" style="width:50px"/>
+                <button type="button" id="addbtn" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">+</button>
+                <p>Price: </p><p id="price">{{ zone.price }}</p><p>kr</p>
+              </div>
+
+            <p><b>Payment info:</b></p>
+                {% csrf_token %}
+            <form>
+            {{ paymentinfoform.as_p }}
+                <input id="num_tickets" name="num_tickets" type="text" style="display: none" value="1">
+                <input id="total_price" name="total_price" type="text" style="display: none" value="{{ zone.price }}">
+            </form>
+            <div class="d-grid gap-2">
+            <button type="submit" name="addressform paymentform" class="btn btn-primary">Confirm Order</button>
+            </div>
         </div>
     <br>
 
