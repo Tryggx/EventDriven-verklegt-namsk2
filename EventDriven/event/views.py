@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db.models import Count, Value, IntegerField, F, OuterRef, Sum, Q
 from django.db.models.functions import Cast
 from django.http import JsonResponse
@@ -18,7 +20,7 @@ def index(request):
         events = list(Event.objects.filter(name__icontains=search_param).values())
         return JsonResponse({'data': events})
     return render(request, 'event/index.html', context={
-        'events':Event.objects.all()
+        'events': Event.objects.filter(show__datetime__gte=datetime.today())
     })
 
 def get_event_by_id(request, eventid):
@@ -26,7 +28,8 @@ def get_event_by_id(request, eventid):
         'event': get_object_or_404(Event, pk=eventid),
         'shows': Show.objects.values().filter(eventid=eventid).annotate(
             availabletickets=SubqueryAggregate(
-                'zone__total_tickets', filter=Q(showid=OuterRef('id')), aggregate=Sum)-Count('ticket'))
+                'zone__total_tickets', filter=Q(showid=OuterRef('id')), aggregate=Sum)-Count('ticket')),
+        'today': datetime.now()
     })
 
 def get_zones_by_showid(request, showid, eventid):

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load tz %}
 {% block content %}
     <h1>{{ event.name }}</h1>
     <h1>{{ event.description }}
@@ -6,6 +7,12 @@
     <p>Veldu dagsetningu:</p>
     <br>
         {% for show in shows %}
-    <a class="btn btn-primary" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</a>
-    {% endfor %}
+            {% if show.datetime|date:"YmdHis" > today|date:"YmdHis" and show.availabletickets > 0 %}
+                <a class="btn btn-primary" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</a>
+            {% elif show.availabletickets == 0 %}
+                 <a class="btn btn-primary disabled" > {{ show.datetime }} <br><br>Available Tickets: 0</a>
+            {% else %}
+                <a class="btn btn-primary disabled" > {{ show.datetime }} <br><br>Event has passed</a>
+            {% endif %}
+        {% endfor %}
 {% endblock %}

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db.models import Q, OuterRef, Sum, Count, F
 from django.shortcuts import render
 from sql_util.aggregates import SubqueryAggregate
@@ -12,7 +14,7 @@ def index(request):
     headliners = Event.objects.filter(headliner=True)
     headliners_rnd = randrange(headliners.count())
     return render(request, 'main/front.html', context={
-        'events': Event.objects.all(),
+        'events': Event.objects.filter(show__datetime__gte=datetime.today()),
         'eventtypes': EventType.objects.all(),
         'headliners': headliners[headliners_rnd],
         'shows': Show.objects.values().annotate(
