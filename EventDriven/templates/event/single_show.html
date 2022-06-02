@@ -1,15 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
-    <br><br> <!-- Skoða - Renderast undir Navbar -->
-    <h1> {{ event.name }}</h1>
-    <h1>{{ show.venueid }}</h1>
-    <h1>{{ show.datetime }}</h1>
-    <h2>Please Select A zone</h2>
+    <div class="eventheaderimg">
+        <img src=" {{ event.header_image }}">
+    </div>
+
+    <div class="eventcontainer">
+        <h1>{{ event.name }}</h1>
+        <h1>{{ show.venueid }}</h1>
+        <h1>{{ show.datetime }}</h1>
+
+    <div class="showcontainer">
+    <p>Please Select A zone</p>
+    <br>
+    <div class="showbuttoncontainer">
     {% for zone in zones %}
+        <div class="showbutton">
         {% if zone.availabletickets > 0 %}
-            <a href="{{ show.id }}/zones/{{ zone.id }}" class="btn btn-primary"> {{ zone.name }} <br> {{ zone.price }} kr <br> Available Tickets: {{ zone.availabletickets }}</a>
+            <a href="{{ show.id }}/zones/{{ zone.id }}/payment" class="btn btn-primary">
+                {{ zone.name }} <br> {{ zone.price }} kr <br> Available Tickets: {{ zone.availabletickets }}
+            </a>
         {% else %}
             <a class="btn btn-primary disabled"> {{ zone.name }} <br> {{ zone.price }} kr <br> Available Tickets: 0</a>
         {% endif %}
+        </div>
     {% endfor %}
+    </div>
+    </div>
+    </div>
 {% endblock %}
