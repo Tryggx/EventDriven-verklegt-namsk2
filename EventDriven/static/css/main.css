@@ -281,6 +281,7 @@ Change the input style of form-control
     overflow:hidden;
     border-radius: 50%;
     padding:0px !important;
+    border: 2px solid #404040;
 
 }
 
@@ -327,6 +328,60 @@ Change the input style of form-control
 
 footer {
     margin-top: auto;
+}
+.eventheaderimg {
+    position:absolute;
+    width: 100%;
+    z-index: -1;
+
+
+}
+
+.eventcontainer {
+    position:absolute;
+    width: 100%;
+    top:10%;
+}
+
+.eventcontainer #title {
+    color:white;
+    font-family: 'Gotham', sans-serif;
+    font-size: 2.5rem;
+    margin-top:0px;
+    margin-bottom:100px;
+}
+
+.showcontainer {
+    margin-top:100px;
+    margin-left: 30px
+}
+.showcontainer p{
+    font-family: 'Gotham', sans-serif;
+    font-size: 1.2rem;
+    color:white;
+    margin-bottom:-10px;
+}
+.eventheaderimg img{
+    width: 100%;
+    opacity: 0.4;
+    max-height: 80vh;
+    object-fit: cover;
+    -webkit-mask-image: -webkit-gradient(linear, left 0%, left bottom,
+    from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    overflow: hidden;
+}
+.showbuttoncontainer {
+    left:0;
+    right:40px;
+}
+.showbutton {
+    float:left;
+    margin: 5px 25px 20px 0px;
+}
+
+.showbutton a {
+    width:200px;
+    height:90px;
 }
 
 #content {
