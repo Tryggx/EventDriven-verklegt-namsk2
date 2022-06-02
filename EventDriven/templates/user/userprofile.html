@@ -9,7 +9,7 @@
             {% endif %}
         <div class="textdetails">
             <h1 class="userinfo">{{user.username}}</h1>
-            <h1 class="userinfo">{{user.password}}</h1>
+            <h1 class="userinfo">{{user.first_name}} {{ user.last_name }}</h1>
         </div>
         </div>
     </div>
@@ -56,11 +56,11 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Modal body text goes here.</p>
+                                                <p>{{ event.description }}</p>
                                             </div>
                                             <div class="modal-footer">
+                                                <p>{{ ticket.id }}</p>
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
