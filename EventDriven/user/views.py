@@ -13,20 +13,23 @@ User = get_user_model()
 
 def update_user(request):
     instance = get_object_or_404(User, pk=request.user.id)
-    all_categories = EventType.objects.all()
-    user_categories = Likes.objects.filter(likestype__likes__userid=request.user.id)
+    likes = Likes.objects.filter(userid=request.user.id)
+    list = []
+    for i in likes:
+        list.append(i.likestype_id)
     editform = UserEditForm(instance=instance)
-    editform.fields['favorite_categories'] = forms.ModelMultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple,
-        queryset=all_categories,
-        initial=user_categories,
-        required=False)
     if request.method == "POST":
-        if 'editform' in request.POST:
-            editform = UserEditForm(data=request.POST, instance=instance)
-            if editform.is_valid():
-                editform.save()
-                return redirect('/users/profile')
+        editform = UserEditForm(data=request.POST, instance=instance)
+        newlikes = request.POST.getlist('favorite_categories')
+        if editform.is_valid():
+            editform.save()
+            likes.delete()
+            for i in newlikes:
+                savelikes = Likes()
+                savelikes.likestype_id = int(i)
+                savelikes.userid_id = request.user.id
+                savelikes.save()
+            return redirect('/users/profile')
     return render(request, 'user/userprofile.html', {
         'editform': editform
     })
@@ -34,10 +37,14 @@ def update_user(request):
 @login_required
 def profile(request):
     instance = get_object_or_404(User, pk=request.user.id)
+    likes = Likes.objects.filter(userid=request.user.id)
+    list = []
+    for i in likes:
+        list.append(str(i.likestype_id))
     return render(request, 'user/userprofile.html', {
         'tickets': Ticket.objects.filter(userid=request.user.id),
         'events': Event.objects.all(),
-        'editform': UserEditForm(instance=instance),
+        'editform': UserEditForm(instance=instance, initial={"favorite_categories": list}),
         'likes': Likes.objects.all()
 
     })
