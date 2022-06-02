@@ -15,26 +15,22 @@
         </div>
         <div id="pricediv"><a>Price: </a><a id="price">{{ zone.price }}</a><a>kr</a></div>
     </div>
-    <br><br>
-    <form id="bothforms" method="post">
-    </div>
-    <br>
-        <div id="paymentform" class="center form-horizontal">
+    <br><br><br>
 
+        <div id="paymentform" class="center form-horizontal">
             <p><b>Payment info:</b></p>
                 {% csrf_token %}
             <form>
             {{ paymentinfoform.as_p }}
                 <input id="num_tickets" name="num_tickets" type="text" style="display: none" value="1">
                 <input id="total_price" name="total_price" type="text" style="display: none" value="{{ zone.price }}">
+            <button type="submit" name="addressform paymentform" class="btn btn-primary">Confirm Order</button>
             </form>
             <div class="d-grid gap-2">
-            <button type="submit" name="addressform paymentform" class="btn btn-primary">Confirm Order</button>
             </div>
         </div>
     <br>
 
-    </form>
     <br><br>
 
 {% endblock %}

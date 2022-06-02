@@ -282,6 +282,7 @@ Change the input style of form-control
     border-radius: 50%;
     padding:0px !important;
     border: 2px solid #404040;
+    margin-right: 10px;
 
 }
 
@@ -291,6 +292,7 @@ Change the input style of form-control
     height: 100%;
     object-fit: cover;
     padding:0px !important;
+
 }
 
 #id_country,input[type=text],input[type=password],input[type=email],input[type=number],input[type=date],input[type=file]{
