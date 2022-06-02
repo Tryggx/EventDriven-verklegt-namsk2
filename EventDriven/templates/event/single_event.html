@@ -9,8 +9,8 @@
         {% for show in shows %}
             {% if show.datetime|date:"YmdHis" > today|date:"YmdHis" and show.availabletickets > 0 %}
                 <a class="btn btn-primary" href={{ event.id }}/shows/{{ show.id }}> {{ show.datetime }} <br><br> Available tickets: {{ show.availabletickets }}</a>
-            {% elif show.availabletickets == 0 %}
-                 <a class="btn btn-primary disabled" > {{ show.datetime }} <br><br>Available Tickets: 0</a>
+            {% elif show.availabletickets == 0 or show.availabletickets == None%}
+                 <a class="btn btn-primary disabled" > {{ show.datetime }} <br><br>Sold out</a>
             {% else %}
                 <a class="btn btn-primary disabled" > {{ show.datetime }} <br><br>Event has passed</a>
             {% endif %}
