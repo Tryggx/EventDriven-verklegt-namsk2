@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+    {% if headliners %}
     <div id="eventContainer">
     <div class="headlineEvent">
         <a href="/events/{{ headliners.id }}">
         <img  style="margin-top: 20px" class="headlineimg" src ="{{ headliners.header_image }}">
         </a>
     </div>
+    {% endif %}
     <br>
         {% for eventtype in eventtypes %}
             <h1>{{ eventtype.name }}</h1>

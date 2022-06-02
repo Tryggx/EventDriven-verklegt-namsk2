@@ -11,8 +11,12 @@ from random import randrange
 
 
 def index(request):
-    headliners = Event.objects.filter(headliner=True)
-    headliners_rnd = randrange(headliners.count())
+    headliners = Event.objects.filter(headliner=True, show__datetime__gte=datetime.today())
+    if headliners.count() != 0:
+        headliners_rnd = randrange(headliners.count())
+    else:
+        headliners = [False]
+        headliners_rnd = 0
     return render(request, 'main/front.html', context={
         'events': Event.objects.filter(show__datetime__gte=datetime.today()),
         'eventtypes': EventType.objects.all(),
