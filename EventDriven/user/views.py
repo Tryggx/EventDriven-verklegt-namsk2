@@ -4,29 +4,31 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.shortcuts import render, redirect
+
+from django import forms
 from forms.forms import RegisterUserForm, UserEditForm, ChangePasswordForm
-from user.models import Ticket
-from event.models import Event
+from user.models import Ticket, Likes
+from event.models import Event, EventType
 User = get_user_model()
 
 def update_user(request):
     instance = get_object_or_404(User, pk=request.user.id)
+    all_categories = EventType.objects.all()
+    user_categories = Likes.objects.filter(likestype__likes__userid=request.user.id)
     editform = UserEditForm(instance=instance)
-    #passform = ChangePasswordForm(user=request.user)
+    editform.fields['favorite_categories'] = forms.ModelMultipleChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        queryset=all_categories,
+        initial=user_categories,
+        required=False)
     if request.method == "POST":
         if 'editform' in request.POST:
             editform = UserEditForm(data=request.POST, instance=instance)
             if editform.is_valid():
                 editform.save()
                 return redirect('/users/profile')
-    #    if 'passform' in request.POST:
-     #       passform = ChangePasswordForm(data=request.POST, user=request.user)
-      #      if passform.is_valid():
-       #         passform.save()
-        #        return redirect('/users/profile')
     return render(request, 'user/userprofile.html', {
-        'editform': editform,
-        #'passform': passform
+        'editform': editform
     })
 
 @login_required
@@ -35,7 +37,9 @@ def profile(request):
     return render(request, 'user/userprofile.html', {
         'tickets': Ticket.objects.filter(userid=request.user.id),
         'events': Event.objects.all(),
-        'editform': UserEditForm(instance=instance)
+        'editform': UserEditForm(instance=instance),
+        'likes': Likes.objects.all()
+
     })
 
 
