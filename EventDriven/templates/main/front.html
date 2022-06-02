@@ -2,7 +2,9 @@
 {% block content %}
     <div id="eventContainer">
     <div class="headlineEvent">
+        <a href="/events/{{ headliners.id }}">
         <img  style="margin-top: 20px" class="headlineimg" src ="{{ headliners.header_image }}">
+        </a>
     </div>
     <br>
         {% for eventtype in eventtypes %}
