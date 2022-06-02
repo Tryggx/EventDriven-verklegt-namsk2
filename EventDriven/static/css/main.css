@@ -229,13 +229,6 @@ Change the input style of form-control
 .form-horizontal > .p {
     margin-top: 20px;
 }
-#id_username.form-control{
-    width: 100%;
-
-}
-#id_password.form-control{
-    width: 100%;
-}
 .form form-horizontal white > input{
     width:100%;
 }
@@ -265,14 +258,55 @@ Change the input style of form-control
     color: red;
 }
 
-.nav-item img {
-    margin-top:-20px;
-    margin-bottom:-15px;
+.nav-img {
     width:40px;
     height:40px;
+    overflow:hidden;
     border-radius: 50%;
+    padding:0px !important;
+
 }
 
+.nav-img img {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding:0px !important;
+}
+
+#id_country,input[type=text],input[type=password],input[type=email],input[type=number],input[type=date],input[type=file]{
+    color:white;
+    background-color: #272727 ;
+    font-family: 'Gotham', sans-serif;
+    border-color: #404040;
+}
+#id_country,input[type=text]:focus,input[type=password]:focus,input[type=email]:focus,input[type=number]:focus,input[type=date]:focus,input[type=file]:focus{
+    color:white;
+    background-color: #272727 ;
+    font-family: 'Gotham', sans-serif;
+    border-color: #404040;
+}
+#ticketnum {
+    --bs-btn-color: #fff;
+    background:#0d6efd;
+    --bs-btn-bg: #0d6efd;
+}
+
+.btn-group {
+    float: left;
+}
+
+
+#pricediv{
+    float:left;
+    color: white;
+    margin-top:5px;
+    margin-left:15px;
+    font-family: 'Gotham', sans-serif;
+    font-size: 1.2rem;
+    border-color: #404040;
+}
 
 
 #id_name, label[for='id_name']{

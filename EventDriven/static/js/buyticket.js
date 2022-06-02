@@ -2,16 +2,16 @@ $("#sendhome").change(function() {
     if ( $(this).is(':checked') ) {
         $("#addressform").show();
 
-        $("label[for='id_name']").css('display','inline-block');
-        $("#id_name").css('display','inline-block');
-        $("label[for='id_address']").css('display','inline-block');
-        $("#id_address").css('display','inline-block');
-        $("label[for='id_city']").css('display','inline-block');
-        $("#id_city").css('display','inline-block');
-        $("label[for='id_country']").css('display','inline-block');
-        $("#id_country").css('display','inline-block');
-        $("label[for='id_zip']").css('display','inline-block');
-        $("#id_zip").css('display','inline-block');
+        $("label[for='id_name']").show();
+        $("#id_name").show();
+        $("label[for='id_address']").show();
+        $("#id_address").show();
+        $("label[for='id_city']").show();
+        $("#id_city").show();
+        $("label[for='id_country']").show();
+        $("#id_country").show();
+        $("label[for='id_zip']").show();
+        $("#id_zip").show();
         $("#id_name").attr('required', true);
         $("#id_address").attr('required',true);
         $("#id_city").attr('required',true);
@@ -19,16 +19,16 @@ $("#sendhome").change(function() {
         $("#id_zip").attr('required',true);
     } else {
         $("#addressform").hide()
-        $("label[for='id_name']").css('display','none');
-        $("#id_name").css('display','none');
-        $("label[for='id_address']").css('display','none');
-        $("#id_address").css('display','none');
-        $("label[for='id_city']").css('display','none');
-        $("#id_city").css('display','none');
-        $("label[for='id_country']").css('display','none');
-        $("#id_country").css('display','none');
-        $("label[for='id_zip']").css('display','none');
-        $("#id_zip").css('display','none');
+        $("label[for='id_name']").hide();
+        $("#id_name").hide();
+        $("label[for='id_address']").hide();
+        $("#id_address").hide();
+        $("label[for='id_city']").hide();
+        $("#id_city").hide();
+        $("label[for='id_country']").hide();
+        $("#id_country").hide();
+        $("label[for='id_zip']").hide();
+        $("#id_zip").hide();
         $("#id_name").removeAttr('required');
         $("#id_address").removeAttr('required');
         $("#id_city").removeAttr('required');

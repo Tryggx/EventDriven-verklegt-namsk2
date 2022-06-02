@@ -55,7 +55,7 @@ class PaymentInfoForm(forms.Form):
     name = forms.CharField(required=False, label='Full name', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
     address = forms.CharField(required=False, label='Address', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
     city = forms.CharField(required=False, label='City', max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    country = forms.ChoiceField(required=False, choices=COUNTRY_CHOICES, widget=widgets.Select(attrs={'class': 'form-control'}))
+    country = forms.ChoiceField(initial="IS", required=False, choices=COUNTRY_CHOICES, widget=widgets.Select(attrs={'class': 'form-control'}))
     zip = forms.CharField(required=False, label='Postal code', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 
