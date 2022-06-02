@@ -384,7 +384,14 @@ footer {
 .showbutton a {
     width:200px;
     height:90px;
+    background-color: gray;
+    border-color: gray;
 }
+.showbutton a:hover{
+    color:#161616;
+    background-color: white;
+}
+
 
 .profilepiccontainer {
     float:left;
