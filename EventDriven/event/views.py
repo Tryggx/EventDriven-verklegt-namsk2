@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Value, IntegerField, F, OuterRef, Sum, Q
 from django.db.models.functions import Cast
 from django.http import JsonResponse
@@ -36,7 +37,7 @@ def get_event_by_id(request, eventid):
 
 def get_zones_by_showid(request, showid, eventid):
     return render(request, 'event/single_show.html', {
-        'event': get_object_or_404(Event, pk=eventid).fil,
+        'event': get_object_or_404(Event, pk=eventid),
         'zones': Zone.objects.values().annotate(availabletickets=F('total_tickets')-Count('ticket')).filter(showid=showid),
         'show': get_object_or_404(Show, pk=showid)
     })
@@ -68,6 +69,7 @@ def get_zone(request, eventid, showid, zoneid):
         'zone': Zone.objects.get(pk=zoneid)
     })
 
+@login_required(login_url='/users/login')
 def confirmticket(request, eventid, showid, zoneid):
     if request.method == 'POST':
         #if 'addressform' and 'paymentform' in request.POST:
