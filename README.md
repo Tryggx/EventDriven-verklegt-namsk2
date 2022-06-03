@@ -20,3 +20,4 @@ The base requrements for the website are as follows:
 * Dynamic tracking of available tickets
     * Each time the event detail site is loaded, the available tickets are checked. 
 * Users can see their own tickets on their profile page
+* Choosing a specific category of events in the navbar
