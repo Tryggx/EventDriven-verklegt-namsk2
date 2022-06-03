@@ -29,7 +29,9 @@ def get_event_by_id(request, eventid):
         'shows': Show.objects.values().filter(eventid=eventid).annotate(
             availabletickets=SubqueryAggregate(
                 'zone__total_tickets', filter=Q(showid=OuterRef('id')), aggregate=Sum)-Count('ticket')),
-        'today': datetime.now()
+        'today': datetime.now(),
+        'similar_events': Event.objects.filter(eventtypeid=(
+            Event.objects.get(pk=eventid).eventtypeid_id)).exclude(pk=eventid)[:2]
     })
 
 def get_zones_by_showid(request, showid, eventid):

@@ -1,0 +1,5 @@
+<div>
+    {% for event in similar_events %}
+    {% include 'event/single_event_card.html' with event=event%}
+    {% endfor %}
+</div>
