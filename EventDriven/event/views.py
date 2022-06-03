@@ -31,7 +31,7 @@ def get_event_by_id(request, eventid):
                 'zone__total_tickets', filter=Q(showid=OuterRef('id')), aggregate=Sum)-Count('ticket')),
         'today': datetime.now(),
         'similar_events': Event.objects.filter(eventtypeid=(
-            Event.objects.get(pk=eventid).eventtypeid_id)).exclude(pk=eventid)[:2]
+            Event.objects.get(pk=eventid).eventtypeid_id),show__datetime__gte=datetime.today()).distinct().exclude(pk=eventid)
     })
 
 def get_zones_by_showid(request, showid, eventid):
