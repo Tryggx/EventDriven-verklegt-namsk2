@@ -100,9 +100,13 @@
         <hr>
         <div id="3" class="white center">
              <h4> Favorite categories </h4>
+            {% if likes|length >= 1 %}
             {% for like in likes %}
                 <h1 class="likes"> - {{ like.likestype }} </h1>
             {% endfor %}
+            {% else %}
+                <h1 class="likes"> You have no favorite categories </h1>
+            {% endif %}
         <br><br>
 
         </div>
