@@ -36,7 +36,7 @@ def get_event_by_id(request, eventid):
 
 def get_zones_by_showid(request, showid, eventid):
     return render(request, 'event/single_show.html', {
-        'event': get_object_or_404(Event, pk=eventid),
+        'event': get_object_or_404(Event, pk=eventid).fil,
         'zones': Zone.objects.values().annotate(availabletickets=F('total_tickets')-Count('ticket')).filter(showid=showid),
         'show': get_object_or_404(Show, pk=showid)
     })
@@ -44,7 +44,7 @@ def get_zones_by_showid(request, showid, eventid):
 def get_event_by_type(request, eventtypeid):
     return render(request, 'event/index.html', context={
         'header_name': EventType.objects.get(pk=eventtypeid),
-        'events': Event.objects.filter(eventtypeid=eventtypeid)
+        'events': Event.objects.filter(eventtypeid=eventtypeid).filter(show__datetime__gte=datetime.today()).distinct()
     })
 
 
