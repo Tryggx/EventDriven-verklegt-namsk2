@@ -57,22 +57,22 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Tickets for {{ event.name }} on {{ show.datetime }}</h5>
+                                                <h1 class="modal-title">Tickets for {{ event.name }} on {{ show.datetime }}</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="description">
-                                                    <h5>{{ event.name }}</h5>
-                                                    <h6>{{ show.datetime }}</h6>
-                                                    <h6>{{ venue.location }}</h6>
-                                                    <h6>{{ zone.name }}</h6>
-                                                    <h6>{{ zone.price }}</h6>
-                                                <p>{{ event.description }}</p>
+                                                    <h4>{{ event.name }}</h4>
+                                                    <h5>{{ show.datetime }}</h5>
+                                                    <h5>{{ show.venueid.name }}, {{ show.venueid.locationid }}</h5>
+                                                    <h5>{{ zone.name }}</h5>
+                                                    <br>
+                                                <h5>{{ event.description }}</h5>
                                                 </div>
                                                 <div class="tickets">
                                                     {% for ticket in tickets %}
                                                     {% if ticket.showid_id == show.id  %}
-                                                        <p>Ticket Number: {{ ticket.id }} </p>
+                                                        <p>Ticket#: {{ ticket.id }} &nbsp&nbsp Zone: {{ ticket.zone_name.name }} </p>
                                                     {% endif%}
                                                 {% endfor %}
                                                 {% for key, value in ticketcountdict.items %}
