@@ -67,15 +67,11 @@ class PaymentForm(forms.Form):
     cvc = forms.IntegerField(label='CVC (on back of card)', max_value=9999,
                              widget=forms.NumberInput(attrs={'class': 'form-control'}))
 
-category_choices = (
-    ('concerts', 'Concerts' ),
-    ('theater', 'Theater' ),
-    ('standup', 'Stand-up' ),
-)
 
 class UserEditForm(ModelForm):
     favorite_categories = forms.MultipleChoiceField(choices=EventType.objects.values_list(),
-                                                         widget=forms.CheckboxSelectMultiple)
+                                                         widget=forms.CheckboxSelectMultiple,
+                                                        required=False)
 
     class Meta:
         model = User
