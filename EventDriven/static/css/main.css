@@ -512,3 +512,10 @@ footer {
 #id_zip, label[for='id_zip']{
     display:none;
 }
+
+.eventCardText{
+    position: relative;
+    top: -200px;
+    left: 16px;
+    color: white;
+}
