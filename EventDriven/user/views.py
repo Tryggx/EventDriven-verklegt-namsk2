@@ -8,7 +8,10 @@ from django.db.models import Count
 from django import forms
 from forms.forms import RegisterUserForm, UserEditForm, ChangePasswordForm
 from user.models import Ticket, Likes
-from event.models import Event, EventType, Show
+from event.models import Event, EventType, Show, Venue
+import datetime
+from django.utils.formats import date_format
+from collections import defaultdict
 
 User = get_user_model()
 
@@ -44,17 +47,18 @@ def profile(request):
     ticketcountdict = {}
     for show in shows:
         ticketcountdict[show['showid']] = (Ticket.objects.filter(showid=show['showid']).count())
-    list = []
 
+    likelist = []
     for i in likes:
-        list.append(str(i.likestype_id))
+        likelist.append(str(i.likestype_id))
     return render(request, 'user/userprofile.html', {
         'tickets': tickets,
         'shows': Show.objects.filter(ticket__userid_id=request.user.id).distinct(),
         'events': Event.objects.all(),
-        'editform': UserEditForm(instance=instance, initial={"favorite_categories": list}),
+        'editform': UserEditForm(instance=instance, initial={"favorite_categories": likelist}),
         'likes': Likes.objects.all(),
-        'ticketcountdict': ticketcountdict
+        'ticketcountdict': ticketcountdict,
+        'date': datetime.datetime.now()
 
     })
 

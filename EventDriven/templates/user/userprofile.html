@@ -45,22 +45,23 @@
          <div id="2">
              <h4 class="center white">Your tickets</h4>
              <div class="centerform white">
-                 <div class="wrapper"style="margin-left:-50px;">
+                 <div class="wrapper" style="margin-left:-50px;">
                      <div id="section1" >
                     {% for event in events %}
                         {% for show in shows %}
                             {% if show.eventid == event %}
-                            <div>
-                                {% include 'event/single_show_card.html' with event=event %}
-                                </div>
-                                <div class="modal fade modal-lg" id="modal{{ show.id }}" tabindex="-1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title">Tickets for {{ event.name }} on {{ show.datetime }}</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
+                                 {% if show.datetime|date:"YmdHis" > date|date:"YmdHis" %}
+                                     <div>
+                                         {% include 'event/single_show_card.html' with event=event %}
+                                     </div>
+                                     <div class="modal fade modal-lg" id="modal{{ show.id }}" tabindex="-1">
+                                         <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Tickets for {{ event.name }} on {{ show.datetime }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
                                                 <div class="description">
                                                     <h4>{{ event.name }}</h4>
                                                     <h5>{{ show.datetime }}</h5>
@@ -83,20 +84,19 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-
-
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
+                                {% endif %}
                             {% endif %}
+                        {% endfor %}
                     {% endfor %}
-             {% endfor %}
                      </div>
                  </div>
              </div>
-        </div>
+         </div>
         <hr>
         <div id="3" class="white center">
              <h4> Favorite categories </h4>
