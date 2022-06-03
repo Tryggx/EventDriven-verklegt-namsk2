@@ -18,5 +18,5 @@ The base requrements for the website are as follows:
 * Multiple zones for each show
     * This way each event can be in multiple venues, each having multiple zones.
 * Dynamic tracking of available tickets
-    * Each time the event detail site is loaded, the available tickets are checked. 
+    * Each time the event detail site is loaded, the available tickets are calculated. 
 * Users can see their own tickets on their profile page
