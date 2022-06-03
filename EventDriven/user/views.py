@@ -45,6 +45,7 @@ def profile(request):
     for show in shows:
         ticketcountdict[show['showid']] = (Ticket.objects.filter(showid=show['showid']).count())
     list = []
+
     for i in likes:
         list.append(str(i.likestype_id))
     return render(request, 'user/userprofile.html', {
