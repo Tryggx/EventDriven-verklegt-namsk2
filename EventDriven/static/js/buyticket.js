@@ -80,12 +80,12 @@ $('.btn-number').click(function(e){
 $('.input-number').change(function() {
 
     minValue =  parseInt($(this).attr('min'));
-    maxValue =  parseInt($(this).attr('max'));
+    maxValue = parseInt(maxTickets)
+    if(maxValue > 10)
+        maxValue =  10;
     valueCurrent = parseInt($(this).val());
 
-    $('#num_tickets').val(valueCurrent);
-    $('#price').text(valueCurrent*singleTicketPrice);
-    $('#total_price').val(valueCurrent*singleTicketPrice);
+
     name = $(this).attr('name');
     if(valueCurrent >= minValue) {
         $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
@@ -97,13 +97,17 @@ $('.input-number').change(function() {
     }
     if(valueCurrent <= maxValue) {
         $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+
     } else {
         //alert('Sorry, the maximum value was reached');
-        $(this).val('10');
+        valueCurrent = maxValue;
+        $(this).val(maxValue);
         $(".btn-number[data-type='minus']").removeAttr('disabled')
         $(".btn-number[data-type='plus']").attr('disabled', true);
     }
-
+    $('#num_tickets').val(valueCurrent);
+    $('#price').text(valueCurrent*singleTicketPrice);
+    $('#total_price').val(valueCurrent*singleTicketPrice);
 
 });
 $(".input-number").keydown(function (e) {

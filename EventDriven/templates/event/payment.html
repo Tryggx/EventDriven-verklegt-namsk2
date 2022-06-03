@@ -3,7 +3,11 @@
 {% block content%}
     <script type="text/javascript">
         var singleTicketPrice = "{{zone.price}}";
+        var maxTickets = "{{ zone.availabletickets }}"
     </script>
+    <div>
+    {{ zone }}
+    </div>
     <div class="center form-horizontal" >
         <h1 style="margin: 0px">{{ event.name }}</h1>
         <p>{{ show.datetime }}</p>
@@ -19,8 +23,9 @@
 
         <div id="paymentform" class="center form-horizontal">
             <p><b>Payment info:</b></p>
+
+            <form method="post">
                 {% csrf_token %}
-            <form>
             {{ paymentinfoform.as_p }}
                 <input id="num_tickets" name="num_tickets" type="text" style="display: none" value="1">
                 <input id="total_price" name="total_price" type="text" style="display: none" value="{{ zone.price }}">

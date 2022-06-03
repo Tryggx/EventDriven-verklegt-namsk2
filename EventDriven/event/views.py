@@ -93,7 +93,7 @@ def confirmticket(request, eventid, showid, zoneid):
     return render(request, 'event/payment.html', {
         'event': Event.objects.get(pk=eventid),
         'show': Show.objects.get(pk=showid),
-        'zone': Zone.objects.get(pk=zoneid),
+        'zone': Zone.objects.values().annotate(availabletickets=F('total_tickets')-Count('ticket')).filter(showid=showid).get(pk=zoneid),
         'paymentinfoform': PaymentInfoForm()
     })
 
