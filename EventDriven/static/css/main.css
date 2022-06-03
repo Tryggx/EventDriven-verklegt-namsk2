@@ -356,7 +356,13 @@ footer {
     font-family: 'Gotham', sans-serif;
     font-size: 1.3rem;
     margin-top:40px;
+    margin-right:40px;
 }
+
+.eventcontainer .wrapper {
+    margin-right:40px;
+}
+
 
 .showcontainer {
     margin-top:100px;
@@ -408,7 +414,7 @@ footer {
 .cform { /* Center Form */
     top:0;
     left:0;
-      margin-left: 20vw;
+      margin-left: 25vw;
     transform:translate(-25%,0%);
 }
 
@@ -421,6 +427,15 @@ footer {
 .showbutton a:hover{
     color:#272727;
     background-color: white;
+    border: 2px solid #404040;
+    transition-delay: 0ms;
+}
+
+.showbutton a:focus, a:active{
+    color:#272727;
+    background-color: white;
+    border: 2px solid #404040;
+    box-shadow: 0px 0px 0px 0px;
 }
 
 .showbutton a{

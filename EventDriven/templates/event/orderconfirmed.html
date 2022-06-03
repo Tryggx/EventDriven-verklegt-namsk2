@@ -10,7 +10,13 @@
         <h1 id="desc">{{ show.datetime }} </h1>
         <h1 id="desc"> Zone: {{ zone.name }} </h1>
         <h1 id="desc"> Number of Tickets: {{ forms.num_tickets }} </h1>
-        <h1 id="desc"> Price: {{ forms.total_price }} </h1>
+        <h1 id="desc"> Price:
+            {% if zone.price|length == 4 %}
+            {{ zone.price|slice:':1' }}.{{ zone.price|slice:'1:' }}
+            {% elif zone.price|length == 5 %}
+            {{ zone.price|slice:':2' }}.{{ zone.price|slice:'2:' }}
+            {% endif %}
+         kr </h1>
         <br>
         <h1 id="desc">
         {% if forms.sendhome == 'on' %}
