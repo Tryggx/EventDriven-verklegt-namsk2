@@ -64,7 +64,11 @@
                                                 <p>{{ event.description }}</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <p>{{ ticket.id }}</p>
+                                                {% for key, value in ticketcountdict.items %}
+                                                    {% if key == show.id  %}
+                                                        <p>Number of tickets: {{ value}}</p>
+                                                    {% endif %}
+                                                {% endfor %}
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             </div>
                                         </div>
