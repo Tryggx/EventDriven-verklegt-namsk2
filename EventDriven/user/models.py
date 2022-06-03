@@ -8,7 +8,7 @@ from event.models import Zone, Show, EventType
 class User(AbstractUser):
     """Add more parameters to deafult django user"""
     date_of_birth = models.DateField(null=True)
-    profile_picture = models.ImageField(upload_to='profile-pics', blank=True, null=True)
+    profile_picture = models.ImageField(upload_to='profile-pics', blank=True, default='profile-pics/placeholder.jpg')
 
     def __str__(self):
         return self.username
