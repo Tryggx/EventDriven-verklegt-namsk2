@@ -4,21 +4,17 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.shortcuts import render, redirect
-from django.db.models import Count
-from django import forms
 from forms.forms import RegisterUserForm, UserEditForm, ChangePasswordForm
 from user.models import Ticket, Likes
-from event.models import Event, EventType, Show, Venue
+from event.models import Event, Show
 import datetime
-from django.utils.formats import date_format
-from collections import defaultdict
-
 User = get_user_model()
 
 def update_user(request):
     instance = get_object_or_404(User, pk=request.user.id)
     likes = Likes.objects.filter(userid=request.user.id)
     list = []
+    print(likes)
     for i in likes:
         list.append(i.likestype_id)
     editform = UserEditForm(instance=instance)
@@ -26,6 +22,7 @@ def update_user(request):
         editform = UserEditForm(data=request.POST, instance=instance)
         newlikes = request.POST.getlist('favorite_categories')
         if editform.is_valid():
+            print(likes)
             editform.save()
             likes.delete()
             for i in newlikes:
@@ -48,15 +45,17 @@ def profile(request):
     for show in shows:
         ticketcountdict[show['showid']] = (Ticket.objects.filter(showid=show['showid']).count())
 
-    likelist = []
+    list = []
     for i in likes:
-        likelist.append(str(i.likestype_id))
+        if i.likestype_id not in list:
+            list.append(str(i.likestype_id))
+    print(list)
     return render(request, 'user/userprofile.html', {
         'tickets': tickets,
         'shows': Show.objects.filter(ticket__userid_id=request.user.id).distinct(),
         'events': Event.objects.all(),
-        'editform': UserEditForm(instance=instance, initial={"favorite_categories": likelist}),
-        'likes': Likes.objects.all(),
+        'editform': UserEditForm(instance=instance, initial={"favorite_categories": list}),
+        'likes': likes,
         'ticketcountdict': ticketcountdict,
         'date': datetime.datetime.now()
 
