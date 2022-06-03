@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.shortcuts import render, redirect
-
+from django.db.models import Count
 from django import forms
 from forms.forms import RegisterUserForm, UserEditForm, ChangePasswordForm
 from user.models import Ticket, Likes
@@ -40,6 +40,10 @@ def profile(request):
     instance = get_object_or_404(User, pk=request.user.id)
     likes = Likes.objects.filter(userid=request.user.id)
     tickets = Ticket.objects.filter(userid=request.user.id)
+    shows = Ticket.objects.values('showid').distinct()
+    ticketcountdict = {}
+    for show in shows:
+        ticketcountdict[show['showid']] = (Ticket.objects.filter(showid=show['showid']).count())
     list = []
     for i in likes:
         list.append(str(i.likestype_id))
@@ -48,7 +52,8 @@ def profile(request):
         'shows': Show.objects.filter(ticket__userid_id=request.user.id).distinct(),
         'events': Event.objects.all(),
         'editform': UserEditForm(instance=instance, initial={"favorite_categories": list}),
-        'likes': Likes.objects.all()
+        'likes': Likes.objects.all(),
+        'ticketcountdict': ticketcountdict
 
     })
 
