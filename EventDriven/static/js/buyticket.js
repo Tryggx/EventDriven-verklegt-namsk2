@@ -106,7 +106,10 @@ $('.input-number').change(function() {
         $(".btn-number[data-type='plus']").attr('disabled', true);
     }
     $('#num_tickets').val(valueCurrent);
-    $('#price').text(valueCurrent*singleTicketPrice);
+    let valuestring = valueCurrent*singleTicketPrice;
+    if(valuestring >= 1000)
+        valuestring = valuestring.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    $('#price').text(valuestring + " ");
     $('#total_price').val(valueCurrent*singleTicketPrice);
 
 });

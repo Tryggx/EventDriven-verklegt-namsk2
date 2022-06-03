@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="center">
-    <form class="form form-horizontal white" method="post" enctype="multipart/form-data">
+    <form class="form form-horizontal white centerform" method="post" enctype="multipart/form-data">
     <h1 style="margin-left: 0px; margin-bottom:20px">Sign up here</h1>
         {% csrf_token %}
         {{ form.as_p }}
     <input type="submit" class="btn btn-primary" value="Confirm">
     </form>
-    </div>
 {% endblock %}

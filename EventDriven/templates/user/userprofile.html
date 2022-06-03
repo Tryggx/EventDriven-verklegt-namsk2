@@ -108,9 +108,9 @@
         </div>
         <hr>
          <div id="4">
-             <div class="center white">
-             <h4>Edit user information</h4>
-                 <form action="/users/edituser" class="form form-horizontal white cform" method="post" id="editform" enctype="multipart/form-data">
+             <div class="white">
+             <h4 class="center">Edit user information</h4>
+                 <form action="/users/edituser" class="form form-horizontal white centerform" method="post" id="editform" enctype="multipart/form-data">
                      {% csrf_token %}
                      {{ editform.as_p }}
                      <input name="editform" type="submit" class="btn btn-primary" value="Confirm">

@@ -5,11 +5,8 @@
         var singleTicketPrice = "{{zone.price}}";
         var maxTickets = "{{ zone.availabletickets }}"
     </script>
-    <div>
-    {{ zone }}
-    </div>
-    <div class="center form-horizontal" >
-        <h1 style="margin: 0px">{{ event.name }}</h1>
+    <div class="center form-horizontal"  >
+        <h1 style="margin: 0px; padding-top:20px;" >{{ event.name }}</h1>
         <p>{{ show.datetime }}</p>
         <p>Zone: {{ zone.name }}</p>
         <div class="btn-group">
@@ -17,7 +14,13 @@
             <input type="text" id="ticketnum" class="btn btn-primary input-number" value="1" min="1" max="10" style="width:50px"/>
             <button type="button" id="addbtn" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">+</button>
         </div>
-        <div id="pricediv"><a>Price: </a><a id="price">{{ zone.price }}</a><a>kr</a></div>
+        <div id="pricediv"><a>Price: </a><a id="price">
+            {% if zone.price|length == 4 %}
+            {{ zone.price|slice:':1' }}.{{ zone.price|slice:'1:' }}
+            {% elif zone.price|length == 5 %}
+            {{ zone.price|slice:':2' }}.{{ zone.price|slice:'2:' }}
+            {% endif %}
+        </a><a>kr</a></div>
     </div>
     <br><br><br>
 
