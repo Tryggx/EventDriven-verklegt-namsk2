@@ -43,10 +43,10 @@
     <br><br>
     <div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" tabindex="0">
          <div id="2">
-             <div class="center white">
-                 <h4>Your tickets</h4>
-                 <div class="wrapper">
-                     <div id="section1">
+             <h4 class="center white">Your tickets</h4>
+             <div class="centerform white">
+                 <div class="wrapper"style="margin-left:-50px;">
+                     <div id="section1" >
                     {% for event in events %}
                         {% for show in shows %}
                             {% if show.eventid == event %}
@@ -89,8 +89,8 @@
         <hr>
          <div id="4">
              <div class="center white">
-                 <h4>Edit user information</h4>
-                 <form action="/users/edituser" class="form form-horizontal white" method="post" id="editform" enctype="multipart/form-data">
+             <h4>Edit user information</h4>
+                 <form action="/users/edituser" class="form form-horizontal white cform" method="post" id="editform" enctype="multipart/form-data">
                      {% csrf_token %}
                      {{ editform.as_p }}
                      <input name="editform" type="submit" class="btn btn-primary" value="Confirm">
