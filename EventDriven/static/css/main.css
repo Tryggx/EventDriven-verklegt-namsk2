@@ -419,10 +419,13 @@ footer {
 }
 
 .showbutton a {
+    color:white;
     width:200px;
     height:90px;
-    background-color: gray;
+    background-color: #272727;
     border: 2px solid #404040;
+    font-weight: 100;
+    font-family: 'Gotham', sans-serif;
 }
 .showbutton a:hover{
     color:#272727;
@@ -431,17 +434,13 @@ footer {
     transition-delay: 0ms;
 }
 
-.showbutton a:focus, a:active{
+.showbutton a:focus, showbutton a:active{
     color:#272727;
     background-color: white;
     border: 2px solid #404040;
     box-shadow: 0px 0px 0px 0px;
 }
 
-.showbutton a{
-    background-color: #272727;
-    color:white;
-}
 
 .showbutton .disabled {
     background-color: #161616;
