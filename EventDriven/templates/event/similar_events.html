@@ -1,5 +1,10 @@
-<div>
-    {% for event in similar_events %}
-    {% include 'event/single_event_card.html' with event=event%}
-    {% endfor %}
+<div class="similar-events">
+    <h1>Similar events</h1>
+    <div class="wrapper">
+        <div id="section1">
+            {% for event in similar_events %}
+            {% include 'event/single_event_card.html' with event=event%}
+            {% endfor %}
+        </div>
+    </div>
 </div>

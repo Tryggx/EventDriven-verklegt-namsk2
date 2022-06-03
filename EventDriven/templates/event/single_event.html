@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load tz %}
 {% block content %}
-    <div class="eventheaderimg">
-        <img src=" {{ event.header_image }}">
-    </div>
 
     <div class="eventcontainer">
-        <h1 id="title">{{ event.name }}</h1>
+        <div class="eventheaderimg">
+            <img src=" {{ event.header_image }}">
+        </div>
+        <h1 id="title" style="margin-bottom:0px;">{{ event.name }}</h1>
         <h1 id="desc">{{ event.description }} </h1>
         <br>
 
     <div class="showcontainer">
-        <p>Please select a show:</p>
+        <h1 style="margin-left: 0px;">Please select a show:</h1>
         <br>
     <div class="showbuttoncontainer">
             {% for show in shows %}
@@ -26,7 +26,8 @@
                 </div>
             {% endfor %}
     </div>
+        {% include 'event/similar_events.html'  with similar_events=similar_events%}
     </div>
     </div>
-    {% include 'event/similar_events.html'  with similar_events=similar_events%}
+
 {% endblock %}

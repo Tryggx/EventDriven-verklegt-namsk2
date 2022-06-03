@@ -332,26 +332,30 @@ Change the input style of form-control
 footer {
     margin-top: auto;
 }
-.eventheaderimg {
+.eventheaderimg img{
+    margin-top:-90px;
     position:absolute;
     width: 100%;
     z-index: -1;
-
-
 }
 
 .eventcontainer {
-    position:absolute;
+    position:relative;
     width: 100%;
-    top:10%;
 }
 
 .eventcontainer #title {
     color:white;
     font-family: 'Gotham', sans-serif;
     font-size: 2.5rem;
-    margin-top:0px;
-    margin-bottom:100px;
+    margin-top:25px;
+}
+
+.eventcontainer #desc {
+    color:white;
+    font-family: 'Gotham', sans-serif;
+    font-size: 1.3rem;
+    margin-top:40px;
 }
 
 .showcontainer {
@@ -376,6 +380,15 @@ footer {
 .showbuttoncontainer {
     left:0;
     right:40px;
+    width:auto;
+    overflow: hidden;
+}
+.similar-events {
+    margin-top:100px;
+    margin-left:10px;
+}
+.similar-events h1{
+    margin:0px;
 }
 .showbutton {
     float:left;
